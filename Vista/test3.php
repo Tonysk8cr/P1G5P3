@@ -1,2 +1,0 @@
-<?php
-//Hola mis amigos
