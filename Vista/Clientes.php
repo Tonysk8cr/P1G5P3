@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clientes</title>
+    <link href="Estilos/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            height: 10vh;
+            /* font-size: 30px; */
+        }
+        .flex-item {
+            width: 900px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
+            <a class="navbar-brand"><strong>CLIENTES</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Main.php">Volver al Main
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+<!-- -->
+
+    <div class="row">
+        <div class="col-md-2">
+            <br>
+        </div>
+        <div class="col-md-4 p-5 text-center">
+            <div class="card bg-info text-white" style="width: 30.3rem;">
+                <img src="Imagenes/Inicio.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ver Historial de Clientes</h5>
+                    <p class="card-text">Consulta el registro completo de interacciones, compras y actividad de cada cliente para un mejor seguimiento y atención personalizada.</p>
+                    <a href="HistorialClientes.php" class="btn btn-light">Ver Historial</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 p-5 text-center">
+            <div class="card bg-warning text-white" style="width: 32.5rem;">
+                <img src="Imagenes/Inicio.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ingresar Clientes</h5>
+                    <p class="card-text">Añade nuevos clientes al sistema de forma rápida y sencilla, registrando su información básica para futuras gestiones.</p>
+                    <a href="IngresoCliente.php" class="btn btn-light">Ingresar Cliente</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <br>
+        </div>
+    </div>
+
+
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

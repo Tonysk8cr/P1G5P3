@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAIN</title>
+    <title>Main</title>
     <link rel="stylesheet" href="Estilos/bootstrap.min.css" />
 
     <!--Imagen de fondo-->
@@ -12,11 +12,11 @@
             background-image: url(Imagenes/Inicio.jpg);
             background-size: cover;
             background-position: 40%;
-            height: 70vh;
+            height: 60vh;
         }
     </style>
-</head>
 
+</head>
 
 <body>
 <div class="container-fluid">
@@ -38,7 +38,7 @@
 
     <!--Menu de tareas-->
     <div class="row row-cols-1 text-center">
-        <h2>MENU PRINCIPAL</h2>
+        <h2>MENÚ PRINCIPAL</h2>
         <!-- Grupo de listas -->
         <div class="col-md-4">
             <br>
@@ -59,7 +59,7 @@
                     role="tab"
                     aria-controls="elemento2"
                     id="elemento2"
-                    href=""
+                    href="Clientes.php"
                     class="list-group-item list-group-item-action"
             >
                 Clientes
@@ -74,24 +74,13 @@
             >
                 Formularios de Reparacion
             </a>
-            <a
-                    data-toggle="list"
-                    role="tab"
-                    aria-controls="elemento3"
-                    id="elemento4"
-                    href=""
-                    class="list-group-item list-group-item-action"
-            >
-                Mostrar Formularios de Reparacion
-            </a>
         </div>
         <div class="col-md-4">
             <br>
         </div>
-
     </div>
         <hr/>
-    </div>
+
 
 
 </div>
