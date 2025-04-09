@@ -3,18 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clientes</title>
+    <title>Formularios de Reparacion</title>
     <link href="Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
-
-
 <body>
+<!--Navbar-->
 <div class="container-fluid">
-
-    <!--Navbar-->
     <div class="row">
         <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
-            <a class="navbar-brand"><strong>CLIENTES</strong></a>
+            <a class="navbar-brand"><strong>FORMULARIOS DE REPARACION</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,8 +26,12 @@
             </div>
         </nav>
     </div>
-<!-- -->
+
+
+
+    <!--Estilo columna-->
     <div class="row">
+        <br>
         <br>
         <br>
 
@@ -39,36 +40,43 @@
         <div class="col-md-2">
             <br>
         </div>
-        <div class="col-md-4 p-5 text-center">
-            <div class="card bg-info text-white" style="width: 30.3rem;">
-                <img src="Imagenes/Historial_HD.jpg" class="card-img-top" alt="...">
+        <div class="col-md-4 text-center p-5">
+            <nav class="nav flex-column">
+                <button type="button" class="btn btn-info btn-lg"><strong><em>Borrar formulario</em></strong></button>
+                <br>
+                <button type="button" class="btn btn-info btn-lg"><strong><em>Actualizar status de un equipo</em></strong></button>
+                <br>
+                <button type="button" class="btn btn-info btn-lg"><strong><em>Ingresar diagnostico</em></strong></button>
+                <br>
+                <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar precio</em></strong></button>
+            </nav>
+
+        </div>
+
+        <div class="col-md-4 text-center">
+            <br>
+            <br>
+            <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+                <div class="card-header"><h4>¡ WARNING !</h4></div>
                 <div class="card-body">
-                    <h5 class="card-title">Ver Historial de Clientes</h5>
-                    <p class="card-text">Consulta el registro completo de interacciones, compras y actividad de cada cliente para un mejor seguimiento y atención personalizada.</p>
-                    <a href="HistorialClientes.php" class="btn btn-light">Ver Historial</a>
+                    <p class="card-text">Este apartado unicamente trabaja si cuenta con los permisos necesarios, en caso de no contar con los permisos
+                    solitarlos a su administrador a cargo.</p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 p-5 text-center">
-            <div class="card bg-warning text-white" style="width: 32.5rem;">
-                <img src="Imagenes/Servicio_HD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Ingresar Clientes</h5>
-                    <p class="card-text">Añade nuevos clientes al sistema de forma rápida y sencilla, registrando su información básica para futuras gestiones.</p>
-                    <a href="IngresoCliente.php" class="btn btn-light">Ingresar Cliente</a>
-                </div>
-            </div>
-        </div>
         <div class="col-md-2">
             <br>
         </div>
     </div>
-
-
 
 
 </div>
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>
