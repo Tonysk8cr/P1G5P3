@@ -2,59 +2,25 @@
 
 class usuario
 {
-    private $idusuario;
-    private $nombre;
-    private $telefono;
+    private $id;
     private $correo;
-    private $cotrasena;
+    private $contrasena;
     private $rol;
 
     /**
      * @return mixed
      */
-    public function getIdusuario()
+    public function getId()
     {
-        return $this->idusuario;
+        return $this->id;
     }
 
     /**
-     * @param mixed $idusuario
+     * @param mixed $id
      */
-    public function setIdusuario($idusuario)
+    public function setId($id)
     {
-        $this->idusuario = $idusuario;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    /**
-     * @param mixed $nombre
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-
-    /**
-     * @param mixed $telefono
-     */
-    public function setTelefono($telefono)
-    {
-        $this->telefono = $telefono;
+        $this->id = $id;
     }
 
     /**
@@ -76,17 +42,17 @@ class usuario
     /**
      * @return mixed
      */
-    public function getCotrasena()
+    public function getContrasena()
     {
-        return $this->cotrasena;
+        return $this->contrasena;
     }
 
     /**
-     * @param mixed $cotrasena
+     * @param mixed $contrasena
      */
-    public function setCotrasena($cotrasena)
+    public function setContrasena($contrasena)
     {
-        $this->cotrasena = $cotrasena;
+        $this->contrasena = $contrasena;
     }
 
     /**

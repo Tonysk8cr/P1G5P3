@@ -2,42 +2,77 @@
 
 class reparaciones
 {
-    private $idreparacion;
-    private $serie;
+    private $id;
+    private $dispositivo;
+    private $modelo;
+    private $encargado;
     private $idcliente;
-    private $estado;
+    private $observaciones;
+    private $diagnostico;
     private $precio;
 
     /**
      * @return mixed
      */
-    public function getIdreparacion()
+    public function getId()
     {
-        return $this->idreparacion;
+        return $this->id;
     }
 
     /**
-     * @param mixed $idreparacion
+     * @param mixed $id
      */
-    public function setIdreparacion($idreparacion)
+    public function setId($id)
     {
-        $this->idreparacion = $idreparacion;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getSerie()
+    public function getDispositivo()
     {
-        return $this->serie;
+        return $this->dispositivo;
     }
 
     /**
-     * @param mixed $serie
+     * @param mixed $dispositivo
      */
-    public function setSerie($serie)
+    public function setDispositivo($dispositivo)
     {
-        $this->serie = $serie;
+        $this->dispositivo = $dispositivo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    /**
+     * @param mixed $modelo
+     */
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEncargado()
+    {
+        return $this->encargado;
+    }
+
+    /**
+     * @param mixed $encargado
+     */
+    public function setEncargado($encargado)
+    {
+        $this->encargado = $encargado;
     }
 
     /**
@@ -59,17 +94,33 @@ class reparaciones
     /**
      * @return mixed
      */
-    public function getEstado()
+    public function getObservaciones()
     {
-        return $this->estado;
+        return $this->observaciones;
     }
 
     /**
-     * @param mixed $estado
+     * @param mixed $observaciones
      */
-    public function setEstado($estado)
+    public function setObservaciones($observaciones)
     {
-        $this->estado = $estado;
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDiagnostico()
+    {
+        return $this->diagnostico;
+    }
+
+    /**
+     * @param mixed $diagnostico
+     */
+    public function setDiagnostico($diagnostico)
+    {
+        $this->diagnostico = $diagnostico;
     }
 
     /**

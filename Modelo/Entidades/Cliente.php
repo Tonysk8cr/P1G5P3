@@ -2,25 +2,26 @@
 
 class Cliente
 {
-    private $idcliente;
+    private $id;
     private $nombre;
     private $cedula;
     private $telefono;
+    private $correo;
 
     /**
      * @return mixed
      */
-    public function getIdCliente()
+    public function getId()
     {
-        return $this->idcliente;
+        return $this->id;
     }
 
     /**
-     * @param mixed $idcliente
+     * @param mixed $id
      */
-    public function setId($idcliente)
+    public function setId($id)
     {
-        $this->idcliente = $idcliente;
+        $this->id = $id;
     }
 
     /**
@@ -86,7 +87,6 @@ class Cliente
     {
         $this->correo = $correo;
     }
-    private $correo;
 
 
 }
