@@ -7,7 +7,37 @@
     <link href="Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-5">
+
+<div class="container-fluid">
+
+    <!--Navbar-->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
+            <a class="navbar-brand"><strong>INICIO DE SESION</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Main.php">Volver al Main
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- -->
+    <div class="row">
+        <br>
+        <br>
+    </div>
+
+    <div class="row">
+        <br>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -30,6 +60,8 @@
             </div>
         </div>
     </div>
+
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -28,7 +28,6 @@
     </div>
 
 
-
     <!--Estilo columna-->
     <div class="row">
         <br>
