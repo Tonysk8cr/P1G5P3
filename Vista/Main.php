@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main</title>
-    <link rel="stylesheet" href="Estilos/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Proyecto/Vista/Estilos/bootstrap.min.css">
 
     <!--Imagen de fondo-->
     <style>
         .bg-jumbotron {
-            background-image: url(Imagenes/Inicio.jpg);
+            background-image: url(/Proyecto/Vista/Imagenes/Inicio.jpg);
             background-size: cover;
             background-position: 40%;
             height: 60vh;
