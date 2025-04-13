@@ -123,7 +123,7 @@
                     </div>
                     <br>
                     <!-- Enviar -->
-                    <input type="submit" class="btn btn-success text-center" value="Ingresar Cliente" />
+                    <input type="submit" class="btn btn-success text-center" value="Ingresar Cliente"/>
                 </form>
             </div>
             <div class="col-md-5">

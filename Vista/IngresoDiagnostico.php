@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Historial Clientes</title>
+    <title>Ingresar Diagnostico</title>
     <link href="Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,16 +12,16 @@
     <!--Navbar-->
     <div class="row">
         <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
-            <a class="navbar-brand" href="#"><strong>HISTORIAL CLIENTES</strong></a>
+            <a class="navbar-brand"><strong>INGRESAR DIAGNOSTICO</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="Clientes.php">Volver a Clientes</a>
+                            <a class="dropdown-item" href="FormulariosReparacion.php">Volver a Formularios de Reparacion</a>
                             <a class="dropdown-item" href="Main.php">Volver al Main</a>
                         </div>
                     </li>
@@ -30,7 +30,56 @@
         </nav>
     </div>
 
-    <!--Titulos de Data-->
+    <div class="row">
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <!--Forms para busqueda-->
+    <div class="row">
+        <div class="col-md-4">
+            <br>
+        </div>
+        <div class="col-md-4 text-center">
+            <form action="Main.php" method="post">
+                <!-- ID Cliente -->
+                <div class="form-group">
+                    <label for="user-name"><strong>ID Cliente</strong></label>
+                    <input
+                        type="number"
+                        name="IDcliente"
+                        class="form-control form-control-sm"
+                    />
+                    <br>
+                    <!-- Diagnostico-->
+                    <div class="form-group">
+                        <label for="user-comment"><strong>Diagnostico</strong></label>
+                        <textarea
+                            type="text"
+                            name="Diagnostico"
+                            class="form-control"
+                        ></textarea>
+                    </div>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-success">Ingresar Diagnostico</button></a>
+                    <br>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <br>
+        </div>
+    </div>
+
+
+    <!--Tabla con la info de la busqueda-->
+    <div class="row">
+        <br>
+        <br>
+    </div>
     <div class="row text-center">
         <table class="table table-hover">
             <thead>
@@ -48,49 +97,9 @@
                 <th scope="col">Precio final por reparación</th>
                 <th scope="col">Status</th>
             </tr>
-            <tr>
-                <td>
-                    1
-                </td>
-                <td>
-                    Yosef Vargas Robleto
-                </td>
-                <td>
-                    118690814
-                </td>
-                <td>
-                    70489277
-                </td>
-                <td>
-                    yosefvargas25@gmail.com
-                </td>
-                <td>
-                    asdasdd
-                </td>
-                <td>
-                    Kleyber
-                </td>
-                <td>
-                    dasidasghfduhasuikd
-                </td>
-                <td>
-                    Celular
-                </td>
-                <td>
-                    Samsung S24
-                </td>
-                <td>
-                    238904
-                </td>
-                <td>
-                    En Proceso
-                </td>
-            </tr>
             </thead>
         </table>
     </div>
-
-
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>

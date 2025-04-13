@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
-            <a class="navbar-brand"><strong>FORMULARIOS DE REPARACION</strong></a>
+            <a class="navbar-brand"><strong>FORMULARIOS DE REPARACIÓN</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,11 +41,11 @@
         </div>
         <div class="col-md-4 text-center p-5">
             <nav class="nav flex-column">
-                <button type="button" class="btn btn-info btn-lg"><strong><em>Borrar formulario</em></strong></button>
+                <a href="BorrarFormulario.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Borrar formulario</em></strong></button></a>
                 <br>
-                <button type="button" class="btn btn-info btn-lg"><strong><em>Actualizar status de un equipo</em></strong></button>
+                <a href="ActualizarStatus.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Actualizar status de un equipo</em></strong></button></a>
                 <br>
-                <button type="button" class="btn btn-info btn-lg"><strong><em>Ingresar diagnostico</em></strong></button>
+                <a href="IngresoDiagnostico.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Ingresar diagnostico</em></strong></button></a>
                 <br>
                 <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar precio</em></strong></button>
             </nav>
@@ -68,14 +68,8 @@
             <br>
         </div>
     </div>
-
-
+    
 </div>
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>
