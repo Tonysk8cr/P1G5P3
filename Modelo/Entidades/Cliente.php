@@ -7,6 +7,7 @@ class Cliente
     private $cedula;
     private $telefono;
     private $correo;
+    private $estado;
 
     /**
      * @return mixed
@@ -88,5 +89,20 @@ class Cliente
         $this->correo = $correo;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
 
 }

@@ -1,11 +1,13 @@
 <?php
 
-class usuario
+class Usuario
 {
     private $id;
     private $correo;
     private $contrasena;
     private $rol;
+    private $estado;
+
 
     /**
      * @return mixed
@@ -69,6 +71,22 @@ class usuario
     public function setRol($rol)
     {
         $this->rol = $rol;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
     }
 
 }

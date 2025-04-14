@@ -1,6 +1,6 @@
 <?php
 
-class reparaciones
+class Reparaciones
 {
     private $id;
     private $dispositivo;
@@ -10,6 +10,8 @@ class reparaciones
     private $observaciones;
     private $diagnostico;
     private $precio;
+    private $estado;
+
 
     /**
      * @return mixed
@@ -139,4 +141,19 @@ class reparaciones
         $this->precio = $precio;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @param mixed $estado
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
 }
