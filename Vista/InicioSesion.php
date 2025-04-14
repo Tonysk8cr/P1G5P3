@@ -43,7 +43,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center text-white">Iniciar Sesión</h5>
-                    <form>
+                    <form action="Main.php" method="post">
                         <div class="mb-3 text-white">
                             <label for="email" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">

@@ -42,13 +42,13 @@
             <br>
         </div>
         <div class="col-md-4 text-center">
-            <form action="Main.php" method="post">
+            <form method="post">
                 <!-- ID Cliente -->
                 <div class="form-group">
                     <label for="user-name"><strong>ID Cliente</strong></label>
                     <input
                         type="number"
-                        name="IDcliente"
+                        name="IDCliente"
                         class="form-control form-control-sm"
                     />
                     <br>

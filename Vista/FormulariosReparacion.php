@@ -28,13 +28,13 @@
     </div>
 
 
-    <!--Estilo columna-->
+    <!--Formularios-->
     <div class="row">
         <br>
         <br>
         <br>
-
     </div>
+
     <div class="row">
         <div class="col-md-2">
             <br>
@@ -49,13 +49,12 @@
                 <br>
                 <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar precio</em></strong></button>
             </nav>
-
         </div>
 
         <div class="col-md-4 text-center">
             <br>
             <br>
-            <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+            <div class="card text-white bg-danger mb-3" style="">
                 <div class="card-header"><h4>¡ WARNING !</h4></div>
                 <div class="card-body">
                     <p class="card-text">Este apartado unicamente trabaja si cuenta con los permisos necesarios, en caso de no contar con los permisos
@@ -68,7 +67,7 @@
             <br>
         </div>
     </div>
-    
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>

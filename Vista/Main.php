@@ -33,8 +33,8 @@
             </p>
         </div>
     </div>
-    <BR>
-    <BR>
+    <br>
+    <br>
 
     <!--Menu de tareas-->
     <div class="row row-cols-1 text-center">
@@ -79,8 +79,6 @@
             <br>
         </div>
     </div>
-        <hr/>
-
 
 
 </div>
