@@ -33,15 +33,13 @@
 
     <!--Forms para la busqueda-->
     <div class="row">
-        <br>
-        <br>
-        <br>
-    </div>
-    <div class="row">
         <div class="col-md-4">
             <br>
         </div>
         <div class="col-md-4 text-center">
+            <br>
+            <br>
+            <br>
             <form method="post">
                 <!-- ID Cliente -->
                 <div class="form-group">

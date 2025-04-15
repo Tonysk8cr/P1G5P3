@@ -27,19 +27,15 @@
         </nav>
     </div>
 
-
     <!--Formularios-->
-    <div class="row">
-        <br>
-        <br>
-        <br>
-    </div>
-
     <div class="row">
         <div class="col-md-2">
             <br>
         </div>
         <div class="col-md-4 text-center p-5">
+            <br>
+            <br>
+            <br>
             <nav class="nav flex-column">
                 <a href="BorrarFormulario.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Borrar formulario</em></strong></button></a>
                 <br>
@@ -52,6 +48,9 @@
         </div>
 
         <div class="col-md-4 text-center">
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <div class="card text-white bg-danger mb-3" style="">

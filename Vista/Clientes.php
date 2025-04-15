@@ -29,17 +29,15 @@
             </div>
         </nav>
     </div>
-<!-- -->
-    <div class="row">
-        <br>
-        <br>
 
-    </div>
+    <!--Cards con acceso a las acciones-->
     <div class="row">
         <div class="col-md-2">
             <br>
         </div>
         <div class="col-md-4 p-5 text-center">
+            <br>
+            <br>
             <div class="card bg-info text-white" style="width: 30.3rem;">
                 <img src="Imagenes/Historial_HD.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -51,6 +49,8 @@
         </div>
 
         <div class="col-md-4 p-5 text-center">
+            <br>
+            <br>
             <div class="card bg-warning text-white" style="width: 32.5rem;">
                 <img src="Imagenes/Servicio_HD.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -64,7 +64,6 @@
             <br>
         </div>
     </div>
-
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>

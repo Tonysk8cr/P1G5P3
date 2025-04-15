@@ -28,18 +28,13 @@
             </div>
         </nav>
     </div>
-    <!-- -->
-    <div class="row">
-        <br>
-        <br>
-    </div>
 
-    <div class="row">
-        <br>
-    </div>
-
+    <!--Forms para ingreso de info-->
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <br>
+            <br>
+            <br>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center text-white">Iniciar Sesión</h5>
@@ -60,7 +55,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
