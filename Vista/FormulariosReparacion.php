@@ -47,7 +47,7 @@
                 <br>
                 <a href="IngresoDiagnostico.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Ingresar diagnostico</em></strong></button></a>
                 <br>
-                <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar precio</em></strong></button>
+                <a href="AsignarPrecio.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar Precio</em></strong></button></a>
             </nav>
         </div>
 
