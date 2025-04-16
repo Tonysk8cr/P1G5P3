@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clientes</title>
-    <link href="Estilos/bootstrap.min.css" rel="stylesheet">
+    <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 
 
@@ -39,7 +39,7 @@
             <br>
             <br>
             <div class="card bg-info text-white" style="width: 30.3rem;">
-                <img src="Imagenes/Historial_HD.jpg" class="card-img-top" alt="...">
+                <img src="/Proyecto/Vista/Imagenes/Historial_HD.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Ver Historial de Clientes</h5>
                     <p class="card-text">Consulta el registro completo de interacciones, compras y actividad de cada cliente para un mejor seguimiento y atención personalizada.</p>
@@ -52,7 +52,7 @@
             <br>
             <br>
             <div class="card bg-warning text-white" style="width: 32.5rem;">
-                <img src="Imagenes/Servicio_HD.jpg" class="card-img-top" alt="...">
+                <img src="/Proyecto/Vista/Imagenes/Servicio_HD.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Ingresar Clientes</h5>
                     <p class="card-text">Añade nuevos clientes al sistema de forma rápida y sencilla, registrando su información básica para futuras gestiones.</p>

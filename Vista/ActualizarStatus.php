@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Actualizar Status</title>
-    <link href="Estilos/bootstrap.min.css" rel="stylesheet">
+    <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">

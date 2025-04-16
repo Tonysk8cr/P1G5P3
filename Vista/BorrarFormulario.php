@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Borrar Formulario</title>
-    <link href="Estilos/bootstrap.min.css" rel="stylesheet">
+    <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
