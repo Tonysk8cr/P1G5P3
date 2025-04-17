@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
     </div>
 
     <!--Formulario de ingreso-->
-    <h3 class="p-4 text-center text-white">Formulario para el ingreso de un cliente</h3>
+    <h2 class="p-4 text-center text-white">Formulario para el ingreso de un cliente</h2>
         <div class="row">
             <div class="col-md-3">
                 <br>
@@ -45,6 +45,8 @@
                             type="text"
                             name="Nombre"
                             class="form-control form-control-sm"
+                            placeholder="Ingrese el nombre del cliente"
+                            required
                         />
                     </div>
 
@@ -55,6 +57,8 @@
                             type="number"
                             name="Cedula"
                             class="form-control form-control-sm"
+                            placeholder="Ingrese la cédula del cliente"
+                            required
                         />
                     </div>
 
@@ -65,6 +69,8 @@
                             type="number"
                             name="Telefono"
                             class="form-control form-control-sm"
+                            placeholder="Ingrese el telefono del cliente"
+                            required
                         />
                     </div>
 
@@ -75,17 +81,19 @@
                             type="email"
                             name="Correo"
                             class="form-control form-control-sm"
+                            placeholder="Ingrese el correo del cliente"
+                            required
                         />
                     </div>
 
                     <!-- Observaciones-->
                     <div class="form-group">
                         <label for="user-comment">Observaciones</label>
-                        <textarea
+                        <input
                             type="text"
                             name="Observaciones"
                             class="form-control"
-                        ></textarea>
+                        />
                     </div>
 
                     <!-- Encargado -->
@@ -95,6 +103,8 @@
                             type="text"
                             name="Encargado"
                             class="form-control form-control-sm"
+                            placeholder="Ingrese el nombre del encargado de reparación"
+                            required
                         />
                     </div>
 
@@ -119,6 +129,8 @@
                             type="text"
                             name="Modelo"
                             class="form-control form-control-sm"
+                            placeholder="Ingrese el modelo del dispositivo"
+                            required
                         />
                     </div>
                     <br>

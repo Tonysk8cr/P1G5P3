@@ -41,11 +41,11 @@
                     <form action="Main.php" method="post">
                         <div class="mb-3 text-white">
                             <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo">
+                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" required>
                         </div>
                         <div class="mb-3 text-white">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-success">Ingresar</button>

@@ -47,7 +47,7 @@
             </a>
             <a
                     id="elemento2"
-                    href="Clientes.php"
+                    href="Clientes.php" tab
                     class="list-group-item list-group-item-action"
             >
                 Clientes
@@ -71,7 +71,7 @@
     <!--Acordeones con info sobre la empresa-->
     <div class="row text-center text-white">
         <div class="col-md-12">
-            <h3>TechFix Soluciones</h3>
+            <h2>TechFix Soluciones</h2>
             <br>
             <div class="accordion" id="acordeon-01">
                 <!-- Primer elemento hijo -->
