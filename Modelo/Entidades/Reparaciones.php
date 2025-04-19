@@ -6,11 +6,12 @@ class Reparaciones
     private $dispositivo;
     private $modelo;
     private $encargado;
-    private $idcliente;
+    private $idCliente;
     private $observaciones;
     private $diagnostico;
     private $precio;
     private $estado;
+    private $borradoLogico;
 
 
     /**
@@ -80,17 +81,17 @@ class Reparaciones
     /**
      * @return mixed
      */
-    public function getIdcliente()
+    public function getIdCliente()
     {
-        return $this->idcliente;
+        return $this->idCliente;
     }
 
     /**
-     * @param mixed $idcliente
+     * @param mixed $idCliente
      */
-    public function setIdcliente($idcliente)
+    public function setIdCliente($idCliente)
     {
-        $this->idcliente = $idcliente;
+        $this->idCliente = $idCliente;
     }
 
     /**
@@ -155,5 +156,21 @@ class Reparaciones
     public function setEstado($estado)
     {
         $this->estado = $estado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBorradoLogico()
+    {
+        return $this->borradoLogico;
+    }
+
+    /**
+     * @param mixed $borradoLogico
+     */
+    public function setBorradoLogico($borradoLogico)
+    {
+        $this->borradoLogico = $borradoLogico;
     }
 }

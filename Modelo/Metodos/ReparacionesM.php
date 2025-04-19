@@ -15,8 +15,9 @@ class ReparacionesM
                        `IDCLIENTE`, 
                        `OBSERVACIONES`, 
                        `DIAGNOSTICO`, 
-                       `PRECIO`, 
-                       `ESTADO`) 
+                       `PRECIO`,
+                       `ESTADO`,
+                       `BORRADOLOGICO`) 
                 VALUES (
                         '".$reparaciones->getDispositivo()."',
                         '".$reparaciones->getModelo()."',
@@ -25,6 +26,7 @@ class ReparacionesM
                         '".$reparaciones->getObservaciones()."',
                         '".$reparaciones->getDiagnostico()."',
                         '".$reparaciones->getPrecio()."',
+                        '".$reparaciones->getEstado()."',
                         '1')";
         if($conexion->Ejecutar($sql))
             $retVal=true;
@@ -37,7 +39,7 @@ class ReparacionesM
     {
         $reparaciones = new Reparaciones();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `reparaciones` WHERE `ID`= $id;";
+        $sql="SELECT * FROM `reparaciones` WHERE `ID`= $id AND `BORRADOLOGICO` = 1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
@@ -52,6 +54,7 @@ class ReparacionesM
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
                 $reparaciones->setPrecio($fila['PRECIO']);
                 $reparaciones->setEstado($fila['ESTADO']);
+                $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
             }
         }
         else
@@ -65,10 +68,11 @@ class ReparacionesM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `reparaciones` WHERE `DISPOSITIVO`= $dispositivo;";
+        $sql="SELECT * FROM `reparaciones` WHERE `DISPOSITIVO`= '".$dispositivo."' AND `BORRADOLOGICO` = 1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
+
             while($fila=$resultado->fetch_assoc())
             {
                 $reparaciones = new Reparaciones();
@@ -81,6 +85,7 @@ class ReparacionesM
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
                 $reparaciones->setPrecio($fila['PRECIO']);
                 $reparaciones->setEstado($fila['ESTADO']);
+                $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$reparaciones;
             }
         }
@@ -95,7 +100,7 @@ class ReparacionesM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `reparaciones`;";
+        $sql="SELECT * FROM `reparaciones` WHERE BORRADOLOGICO=1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
@@ -111,6 +116,7 @@ class ReparacionesM
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
                 $reparaciones->setPrecio($fila['PRECIO']);
                 $reparaciones->setEstado($fila['ESTADO']);
+                $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$reparaciones;
             }
         }
@@ -122,21 +128,22 @@ class ReparacionesM
                                             //ACTUALIZAR
     public function Actualizar(Reparaciones $reparaciones)
     {
-        $retval=false;
+        $retVal=false;
         $conexion= new Conexion();
         $sql="UPDATE `reparaciones` SET 
                       `DISPOSITIVO`='".$reparaciones->getDispositivo()."',
                       `MODELO`='".$reparaciones->getModelo()."',
                       `ENCARGADO`='".$reparaciones->getEncargado()."',
-                      `IDCLIENTE`='".$reparaciones->getICliente()."',
+                      `IDCLIENTE`='".$reparaciones->getIdCliente()."',
                       `OBSERVACIONES`='".$reparaciones->getObservaciones()."',
                       `DIAGNOSTICO`='".$reparaciones->getDiagnostico()."',
                       `PRECIO`='".$reparaciones->getPrecio()."',
+                      `ESTADO`='".$reparaciones->getEstado()."'
                   WHERE `ID` = ".$reparaciones->getId().";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
-        return $retval;
+        return $retVal;
     }
 
                                             //Borrado logico
@@ -144,8 +151,8 @@ class ReparacionesM
     {
         $retVal=false;
         $conexion= new Conexion();
-        $sql="UPDATE `reparacioens` SET 
-                      `ESTADO`='0' 
+        $sql="UPDATE `reparaciones` SET 
+                      `BORRADOLOGICO`='0' 
                   WHERE `ID` = ".$id.";";
         if($conexion->Ejecutar($sql))
             $retVal=true;

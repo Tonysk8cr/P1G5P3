@@ -6,13 +6,13 @@ class UsuarioM
                                 //Crear nuevo usuario
     public function Nuevo(Usuario $usuario)
     {
-        $retval=false;
+        $retVal=false;
         $conexion= new Conexion();
         $sql="INSERT INTO `usuario`(
-                       `CORREO`, 
-                       `CONTRASENA`, 
-                      `ROL`,
-                       `ESTADO`)
+                        `CORREO`, 
+                        `CONTRASENA`, 
+                        `ROL`,
+                        `BORRADOLOGICO`)
                 VALUES (
                         '".$usuario->getCorreo()."',
                         '".$usuario->getContrasena()."',
@@ -21,7 +21,7 @@ class UsuarioM
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
-        return $retval;
+        return $retVal;
     }
 
                                 //Busqueda de usuarios por ID
@@ -29,7 +29,7 @@ class UsuarioM
     {
         $usuario = new Usuario();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `usuario` WHERE `ID`= $id;";
+        $sql="SELECT * FROM `usuario` WHERE `ID`= $id AND `BORRADOLOGICO` = 1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
@@ -39,7 +39,7 @@ class UsuarioM
                 $usuario->setCorreo($fila['CORREO']);
                 $usuario->setContrasena($fila['CONTRASENA']);
                 $usuario->setRol($fila['ROL']);
-                $usuario->setEstado($fila['ESTADO']);
+                $usuario->setBorradoLogico($fila['BORRADOLOGICO']);
             }
         }
         else
@@ -53,7 +53,7 @@ class UsuarioM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `usuario` WHERE `ROL`= $rol;";
+        $sql="SELECT * FROM `usuario` WHERE `ROL`= '$rol' AND `BORRADOLOGICO` = 1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
@@ -64,7 +64,7 @@ class UsuarioM
                 $usuario->setCorreo($fila['CORREO']);
                 $usuario->setContrasena($fila['CONTRASENA']);
                 $usuario->setRol($fila['ROL']);
-                $usuario->setEstado($fila['ESTADO']);
+                $usuario->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$usuario;
             }
         }
@@ -79,7 +79,7 @@ class UsuarioM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `usuario`;";
+        $sql="SELECT * FROM `usuario` WHERE BORRADOLOGICO=1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
@@ -90,7 +90,7 @@ class UsuarioM
                 $usuario->setCorreo($fila['CORREO']);
                 $usuario->setContrasena($fila['CONTRASENA']);
                 $usuario->setRol($fila['ROL']);
-                $usuario->setEstado($fila['ESTADO']);
+                $usuario->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$usuario;
             }
         }
@@ -103,17 +103,17 @@ class UsuarioM
                             //Actualizar
     public function Actualizar(Usuario $usuario)
     {
-        $retval=false;
+        $retVal=false;
         $conexion= new Conexion();
         $sql="UPDATE `usuario` SET 
                       `CORREO`='".$usuario->getCorreo()."',
                       `CONTRASENA`='".$usuario->getContrasena()."',
-                      `ROL`='".$usuario->getRol()."',
+                      `ROL`='".$usuario->getRol()."'
                   WHERE `ID` = ".$usuario->getId().";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
-        return $retval;
+        return $retVal;
     }
 
                             //Borrado logico
@@ -122,7 +122,7 @@ class UsuarioM
         $retVal=false;
         $conexion= new Conexion();
         $sql="UPDATE `usuario` SET 
-                      `ESTADO`='0' 
+                      `BORRADOLOGICO`='0' 
                   WHERE `ID` = ".$id.";";
         if($conexion->Ejecutar($sql))
             $retVal=true;

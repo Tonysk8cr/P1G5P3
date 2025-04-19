@@ -6,7 +6,7 @@ class Usuario
     private $correo;
     private $contrasena;
     private $rol;
-    private $estado;
+    private $borradoLogico;
 
     private $progreso;
 
@@ -79,17 +79,17 @@ class Usuario
     /**
      * @return mixed
      */
-    public function getEstado()
+    public function getBorradoLogico()
     {
-        return $this->estado;
+        return $this->borradoLogico;
     }
 
     /**
-     * @param mixed $estado
+     * @param mixed $borradoLogico
      */
-    public function setEstado($estado)
+    public function setBorradoLogico($borradoLogico)
     {
-        $this->estado = $estado;
+        $this->borradoLogico = $borradoLogico;
     }
 
     public function setProgreso($p) {
