@@ -1,3 +1,26 @@
+<?php
+require_once('../Modelo/Conexion.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
+    if (!empty($_POST["IDCliente"])) {
+        $id = $_POST["IDCliente"];
+        $conexion = new Conexion();
+
+        $sql = "UPDATE formulario_reparacion SET estado = '0' WHERE id_cliente = '$id'";
+
+        if ($conexion->Ejecutar($sql)) {
+            echo "<script>alert(' Formulario marcado como eliminado');</script>";
+        } else {
+            echo "<script>alert(' Error al realizar el borrado lógico');</script>";
+        }
+
+        $conexion->Cerrar();
+    } else {
+        echo "<script>alert('Ingresá un ID válido');</script>";
+    }
+}
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -54,7 +77,7 @@
                     <a><button type="button" class="btn btn-outline-light">Buscar Informacion</button></a>
                     <br>
                     <br>
-                    <a><button type="button" class="btn btn-outline-danger">Eliminar Formulario</button></a>
+                    <a><button type="submit" name="eliminar" class="btn btn-danger">Eliminar Formulario</button></a>
                 </div>
             </form>
         </div>

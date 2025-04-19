@@ -8,6 +8,11 @@ class Cliente
     private $telefono;
     private $correo;
     private $estado;
+    private $observaciones;
+    private $encargado;
+    private $dispositivo;
+    private $modelo;
+    private $progreso;
 
     /**
      * @return mixed
@@ -104,5 +109,25 @@ class Cliente
     {
         $this->estado = $estado;
     }
+
+    public function setProgreso($p) {
+        $this->progreso = $p;
+    }
+
+    public function getProgreso() {
+        return $this->progreso;
+    }
+
+    public function setObservaciones($o) { $this->observaciones = $o; }
+    public function getObservaciones() { return $this->observaciones; }
+
+    public function setEncargado($e) { $this->encargado = $e; }
+    public function getEncargado() { return $this->encargado; }
+
+    public function setDispositivo($d) { $this->dispositivo = $d; }
+    public function getDispositivo() { return $this->dispositivo; }
+
+    public function setModelo($m) { $this->modelo = $m; }
+    public function getModelo() { return $this->modelo; }
 
 }

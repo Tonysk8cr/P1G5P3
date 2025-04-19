@@ -1,3 +1,29 @@
+<?php
+require_once('../Modelo/Conexion.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset($_POST["estado"]) && !isset($_POST["visualizar"])) {
+    $id = $_POST["IDCliente"];
+    $nuevo_estado = $_POST["estado"];
+
+    $conexion = new Conexion();
+
+    $sql1 = "UPDATE formulario_reparacion SET status = '$nuevo_estado' WHERE id_cliente = '$id'";
+    $sql2 = "UPDATE cliente SET progreso = '$nuevo_estado' WHERE id_cliente = '$id'";
+
+    $ok1 = $conexion->Ejecutar($sql1);
+    $ok2 = $conexion->Ejecutar($sql2);
+
+    if ($ok1 && $ok2) {
+        echo "<script>alert('✅ Estado actualizado en ambas tablas');</script>";
+    } else {
+        echo "<script>alert('❌ Error al actualizar el estado');</script>";
+    }
+
+    $conexion->Cerrar();
+}
+?>
+
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -39,32 +65,24 @@
             <br>
             <br>
             <br>
-            <form method="post">
-                <!-- ID Cliente -->
-                <div class="form-group">
-                    <label for="user-name"><strong>ID Cliente</strong></label>
-                    <input
-                        type="number"
-                        name="IDCliente"
-                        class="form-control form-control-sm"
-                    />
-                    <br>
-                    <!-- Opciones Status -->
-                    <div class="form-group">
-                        <label for="select-group"><strong>Seleccione el status actual del equipo</strong></label>
-                        <select name="Status" class="form-control">
-                            <option value="EnEspera">En Espera...</option>
-                            <option value="EnProceso">En Proceso</option>
-                            <option value="Listo">Listo</option>
-                        </select>
-                    </div>
-                    <br>
-                    <a><button type="button" class="btn btn-outline-success">Actualizar Status</button></a>
-                    <br>
-                    <br>
-                    <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
-                </div>
+            <form method="POST">
+                <label>ID Cliente</label>
+                <input type="number" name="IDCliente" required>
+                <br>
+                <select name="estado" required>
+                    <option value="En espera">En espera</option>
+                    <option value="En reparación">En reparación</option>
+                    <option value="Listo">Listo</option>
+                    <option value="Entregado">Entregado</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-warning">Actualizar Estado</button>
+                <br>
+                <button type="submit" name="visualizar" class="btn btn-info">Visualizar Actualización</button>
             </form>
+
+
+
         </div>
         <div class="col-md-4">
             <br>

@@ -1,30 +1,37 @@
 <?php
 
+require_once(__DIR__ . '/../Conexion.php');
+
 class ClienteM
 {
-    public function Nuevo(Cliente $cliente)
+    public function Nuevo(Cliente $cliente, $conexion)
     {
-        $retVal=false;
-        $conexion= new Conexion();
-        $sql="INSERT INTO `cliente`(
-                       `NOMBRE`, 
-                       `CEDULA`, 
-                       `TELEFONO`, 
-                       `CORREO`, 
-                       `ESTADO`) 
-                VALUES (
-                        '".$cliente->getNombre()."',
-                        '".$cliente->getCedula()."',
-                        '".$cliente->getTelefono()."',
-                        '".$cliente->getCorreo()."',
-                        '1')";
-        if($conexion->Ejecutar($sql))
-            $retVal=true;
-        $conexion->Cerrar();
+        $retVal = false;
+
+        $sql = "INSERT INTO `cliente`(
+        `NOMBRE`, `CEDULA`, `TELEFONO`, `CORREO`, `OBSERVACIONES`, 
+        `ENCARGADO`, `DISPOSITIVO`, `MODELO`, `PROGRESO`, `ESTADO`
+    ) VALUES (
+        '".$cliente->getNombre()."',
+        '".$cliente->getCedula()."',
+        '".$cliente->getTelefono()."',
+        '".$cliente->getCorreo()."',
+        '".$cliente->getObservaciones()."',
+        '".$cliente->getEncargado()."',
+        '".$cliente->getDispositivo()."',
+        '".$cliente->getModelo()."',
+        '".$cliente->getProgreso()."',
+        '1'
+    )";
+
+        if ($conexion->Ejecutar($sql)) {
+            $retVal = true;
+        }
+
         return $retVal;
     }
 
-                                        //BUSCAR ID
+    //BUSCAR ID
     public function BuscarId($id)
     {
         $cliente = new Cliente();

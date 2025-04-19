@@ -8,6 +8,9 @@ class Usuario
     private $rol;
     private $estado;
 
+    private $progreso;
+
+
 
     /**
      * @return mixed
@@ -88,5 +91,14 @@ class Usuario
     {
         $this->estado = $estado;
     }
+
+    public function setProgreso($p) {
+        $this->progreso = $p;
+    }
+
+    public function getProgreso() {
+        return $this->progreso;
+    }
+
 
 }

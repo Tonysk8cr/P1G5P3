@@ -1,3 +1,49 @@
+<?php
+require_once('../Modelo/Entidades/Cliente.php');
+require_once('../Modelo/Metodos/ClienteM.php');
+require_once('../Modelo/Conexion.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $cliente = new Cliente();
+    $cliente->setNombre($_POST["Nombre"]);
+    $cliente->setCedula($_POST["Cedula"]);
+    $cliente->setTelefono($_POST["Telefono"]);
+    $cliente->setCorreo($_POST["Correo"]);
+    $cliente->setObservaciones($_POST["Observaciones"]);
+    $cliente->setEncargado($_POST["Encargado"]);
+    $cliente->setDispositivo($_POST["Dispositivo"]);
+    $cliente->setModelo($_POST["Modelo"]);
+
+    $cliente->setEstado(1); // Estado activo o predeterminado
+    $cliente->setProgreso("En espera");
+
+    $metodo = new ClienteM();
+    $conexion = new Conexion();
+
+    if ($metodo->Nuevo($cliente, $conexion)) {
+        $id_cliente = $conexion->UltimoIdInsertado();
+        $fecha = date("Y-m-d");
+        $tecnico = $_POST["Encargado"];
+        $estado = "1";
+
+        $sql = "INSERT INTO formulario_reparacion (
+                    id_cliente, fecha_ingreso, tecnico_asignado, status ,estado
+                ) VALUES (
+                    '$id_cliente', '$fecha', '$tecnico', 'En espera' ,'$estado'
+                )";
+
+        $conexion->Ejecutar($sql);
+        echo "<script>alert('✅ Cliente y formulario de reparación registrados');</script>";
+    } else {
+        echo "<script>alert('❌ Error al guardar el cliente');</script>";
+    }
+
+    $conexion->Cerrar();
+}
+?>
+
+
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -32,116 +78,117 @@
 
     <!--Formulario de ingreso-->
     <h2 class="p-4 text-center text-white">Formulario para el ingreso de un cliente</h2>
-        <div class="row">
-            <div class="col-md-3">
-                <br>
-            </div>
-            <div class="col-md-6">
-                <form action="Main.php" method="post">
-                    <!-- Nombre -->
-                    <div class="form-group">
-                        <label for="user-name">Nombre del cliente</label>
-                        <input
+    <div class="row">
+        <div class="col-md-3">
+            <br>
+        </div>
+        <div class="col-md-6">
+            <form action="" method="post">
+
+                <!-- Nombre -->
+                <div class="form-group">
+                    <label for="user-name">Nombre del cliente</label>
+                    <input
                             type="text"
                             name="Nombre"
                             class="form-control form-control-sm"
                             placeholder="Ingrese el nombre del cliente"
                             required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <!-- Cédula -->
-                    <div class="form-group">
-                        <label for="user-name">Cédula del cliente</label>
-                        <input
+                <!-- Cédula -->
+                <div class="form-group">
+                    <label for="user-name">Cédula del cliente</label>
+                    <input
                             type="number"
                             name="Cedula"
                             class="form-control form-control-sm"
                             placeholder="Ingrese la cédula del cliente"
                             required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <!-- Telefono -->
-                    <div class="form-group">
-                        <label for="user-name">Telefono del cliente</label>
-                        <input
+                <!-- Telefono -->
+                <div class="form-group">
+                    <label for="user-name">Telefono del cliente</label>
+                    <input
                             type="number"
                             name="Telefono"
                             class="form-control form-control-sm"
                             placeholder="Ingrese el telefono del cliente"
                             required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <!-- Correo -->
-                    <div class="form-group">
-                        <label for="user-email">Correo electrónico del cliente</label>
-                        <input
+                <!-- Correo -->
+                <div class="form-group">
+                    <label for="user-email">Correo electrónico del cliente</label>
+                    <input
                             type="email"
                             name="Correo"
                             class="form-control form-control-sm"
                             placeholder="Ingrese el correo del cliente"
                             required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <!-- Observaciones-->
-                    <div class="form-group">
-                        <label for="user-comment">Observaciones</label>
-                        <input
+                <!-- Observaciones-->
+                <div class="form-group">
+                    <label for="user-comment">Observaciones</label>
+                    <input
                             type="text"
                             name="Observaciones"
                             class="form-control"
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <!-- Encargado -->
-                    <div class="form-group">
-                        <label for="user-name">Encargado de la reparación</label>
-                        <input
+                <!-- Encargado -->
+                <div class="form-group">
+                    <label for="user-name">Encargado de la reparación</label>
+                    <input
                             type="text"
                             name="Encargado"
                             class="form-control form-control-sm"
                             placeholder="Ingrese el nombre del encargado de reparación"
                             required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <!-- Selección -->
-                    <div class="form-group">
-                        <label for="select-group">Seleccione el tipo de dispositivo</label>
-                        <select name="Dispositivo" class="form-control">
-                            <option value="Celular">Celular</option>
-                            <option value="Tablet">Tablet</option>
-                            <option value="Consola">Consola</option>
-                            <option value="Monitor">Monitor</option>
-                            <option value="PC">PC</option>
-                            <option value="Laptop">Laptop</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
+                <!-- Selección -->
+                <div class="form-group">
+                    <label for="select-group">Seleccione el tipo de dispositivo</label>
+                    <select name="Dispositivo" class="form-control">
+                        <option value="Celular">Celular</option>
+                        <option value="Tablet">Tablet</option>
+                        <option value="Consola">Consola</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="PC">PC</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
 
-                    <!-- Modelo -->
-                    <div class="form-group">
-                        <label for="user-name">Modelo de dispositivo</label>
-                        <input
+                <!-- Modelo -->
+                <div class="form-group">
+                    <label for="user-name">Modelo de dispositivo</label>
+                    <input
                             type="text"
                             name="Modelo"
                             class="form-control form-control-sm"
                             placeholder="Ingrese el modelo del dispositivo"
                             required
-                        />
-                    </div>
-                    <br>
-                    <!-- Enviar -->
-                    <input type="submit" class="btn btn-success text-center" value="Ingresar Cliente"/>
-                </form>
-            </div>
-            <div class="col-md-5">
+                    />
+                </div>
                 <br>
-            </div>
+                <!-- Enviar -->
+                <input type="submit" class="btn btn-success text-center" value="Ingresar Cliente"/>
+            </form>
         </div>
+        <div class="col-md-5">
+            <br>
+        </div>
+    </div>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>

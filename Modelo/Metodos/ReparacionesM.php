@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/../Conexion.php');
+
 class ReparacionesM
 {
     public function Nuevo(Reparaciones $reparaciones)
