@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Main.php">Volver al Main
+                        <a class="nav-link active" href="index.php?controller=index&action=Index">Volver al Main
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
@@ -37,13 +37,13 @@
             <br>
             <br>
             <nav class="nav flex-column">
-                <a href="BorrarFormulario.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Borrar formulario</em></strong></button></a>
+                <a href="index.php?controller=index&action=BorrarFormulario" <button type="button" class="btn btn-info btn-lg"><strong><em>Borrar formulario</em></strong></button></a>
                 <br>
-                <a href="ActualizarStatus.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Actualizar status de un equipo</em></strong></button></a>
+                <a href="index.php?controller=index&action=ActualizarStatus" <button type="button" class="btn btn-info btn-lg"><strong><em>Actualizar status de un equipo</em></strong></button></a>
                 <br>
-                <a href="IngresoDiagnostico.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Ingresar diagnostico</em></strong></button></a>
+                <a href="index.php?controller=index&action=IngresoDiagnostico" <button type="button" class="btn btn-info btn-lg"><strong><em>Ingresar diagnostico</em></strong></button></a>
                 <br>
-                <a href="AsignarPrecio.php" <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar Precio</em></strong></button></a>
+                <a href="index.php?controller=index&action=AsignarPrecio" <button type="button" class="btn btn-info btn-lg"><strong><em>Asignar Precio</em></strong></button></a>
             </nav>
         </div>
 

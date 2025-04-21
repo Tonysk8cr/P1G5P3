@@ -1,5 +1,6 @@
 <?php
-require_once('../Modelo/Conexion.php');
+require_once(__DIR__ . '/../Modelo/Conexion.php');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
     $conexion = new Conexion();
@@ -29,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
 <body>
 <ul>
     <li><strong>VOLVER</strong></li>
-    <a href="FormulariosReparacion.php">Volver a Formularios de Reparacion</a>
-    <a href="Main.php">Volver al Main</a>
+    <a href="index.php?controller=index&action=FormulariosReparacion">Volver a Formularios de Reparacion</a>
+    <a href="index.php?controller=index&action=Index">Volver al Main</a>
 </ul>
 
 <div class="container mt-5">

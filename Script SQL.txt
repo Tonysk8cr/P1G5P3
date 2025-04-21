@@ -1,49 +1,61 @@
 -- Tabla de clientes
-CREATE TABLE cliente (
-    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    cedula VARCHAR(20) NOT NULL,
-    telefono VARCHAR(20),
-    correo VARCHAR(150),
-    observaciones TEXT,
-    encargado VARCHAR(100),
-    dispositivo VARCHAR(50)
+CREATE TABLE CLIENTE (
+    ID_CLIENTE INT AUTO_INCREMENT PRIMARY KEY,
+    NOMBRE VARCHAR(100) NOT NULL,
+    CEDULA VARCHAR(20) NOT NULL,
+    TELEFONO VARCHAR(20),
+    CORREO VARCHAR(150),
+    OBSERVACIONES TEXT,
+    ENCARGADO VARCHAR(100),
+    DISPOSITIVO VARCHAR(50)
 );
 
 -- Tabla de formularios de reparación
-CREATE TABLE formulario_reparacion (
-    id_formulario INT AUTO_INCREMENT PRIMARY KEY,
-    id_cliente INT,
-    diagnostico TEXT,
-    precio_estimado DECIMAL(10,2),
-    status VARCHAR(50),
-    fecha_ingreso DATE,
-    tecnico_asignado VARCHAR(100),
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+CREATE TABLE FORMULARIO_REPARACION (
+    ID_FORMULARIO INT AUTO_INCREMENT PRIMARY KEY,
+    ID_CLIENTE INT,
+    DIAGNOSTICO TEXT,
+    PRECIO_ESTIMADO DECIMAL(10,2),
+    ESTATUS VARCHAR(50),
+    FECHA_INGRESO DATE,
+    TECNICO_ASIGNADO VARCHAR(100),
+    FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE),
+    BORRADOLOGICO TINYINT NOT NULL DEFAULT 1
 );
 
 -- Tabla de historial de clientes
-CREATE TABLE historial_cliente (
-    id_historial INT AUTO_INCREMENT PRIMARY KEY,
-    id_cliente INT,
-    id_formulario INT,
-    modelo VARCHAR(100),
-    precio_final DECIMAL(10,2),
-    status VARCHAR(50),
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-    FOREIGN KEY (id_formulario) REFERENCES formulario_reparacion(id_formulario)
+CREATE TABLE HISTORIAL_CLIENTE (
+    ID_HISTORIAL INT AUTO_INCREMENT PRIMARY KEY,
+    ID_CLIENTE INT,
+    ID_FORMULARIO INT,
+    MODELO VARCHAR(100),
+    PRECIO_FINAL DECIMAL(10,2),
+    ESTATUS VARCHAR(50),
+    FOREIGN KEY (ID_CLIENTE) REFERENCES CLIENTE(ID_CLIENTE),
+    FOREIGN KEY (ID_FORMULARIO) REFERENCES FORMULARIO_REPARACION(ID_FORMULARIO)
+);
+
+--Tabla para los usuarios
+CREATE TABLE usuario (
+	ID_USUARIO INT AUTO_INCREMENT PRIMARY KEY,
+    CORREO VARCHAR(320) NOT NULL UNIQUE,
+    CONTRASENA VARCHAR(255) NOT NULL,
+    ROL ENUM('admin', 'usuario', 'cliente'),
+    FECHA_REGISTRO TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Datos de prueba
-INSERT INTO cliente (nombre, cedula, telefono, correo, observaciones, encargado, dispositivo) VALUES
+INSERT INTO cliente (NOMBRE, CEDULA, TELEFONO, CORREO, OBSERVACIONES, ENCARGADO, DISPOSITIVO) VALUES
 ('Cristian', '111111111', '88888888', 'cristian@mail.com', 'Cliente frecuente', 'Juan Pérez', 'Celular'),
 ('Mariana', '222222222', '70001111', 'mariana@gmail.com', 'Viene por segunda vez', 'María Rodríguez', 'Tablet'),
 ('Kevin', '333333333', '60000000', 'kevin@hotmail.com', 'Revisión pendiente', 'Pablo Ramírez', 'Computadora');
 
-INSERT INTO formulario_reparacion (id_cliente, diagnostico, precio_estimado, status, fecha_ingreso, tecnico_asignado) VALUES
+INSERT INTO formulario_reparacion (ID_CLIENTE, DIAGNOSTICO, PRECIO_ESTIMADO, ESTATUS, FECHA_INGRESO, TECNICO_ASIGNADO) VALUES
 (1, 'Pantalla rota', 25000, 'Pendiente', '2024-11-05', 'Juan Pérez'),
 (2, 'Problema de batería', 18000, 'En proceso', '2024-11-10', 'Ana Morales'),
 (3, 'No enciende el dispositivo', 0, 'Diagnóstico', '2024-11-12', 'Pablo Ramírez');
 
-INSERT INTO historial_cliente (id_cliente, id_formulario, modelo, precio_final, status) VALUES
+INSERT INTO historial_cliente (ID_CLIENTE, ID_FORMULARIO, MODELO, PRECIO_FINAL, ESTATUS) VALUES
 (1, 1, 'Samsung S24', 238904, 'En Proceso');
+
+

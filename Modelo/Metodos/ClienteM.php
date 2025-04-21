@@ -17,7 +17,7 @@ class ClienteM
                     `ENCARGADO`, 
                     `DISPOSITIVO`, 
                     `MODELO`, 
-                    `PROGRESO`, 
+                    `ESTATUS`, 
                     `BORRADOLOGICO`) 
     VALUES (
             '".$cliente->getNombre()."',
@@ -43,13 +43,20 @@ class ClienteM
     {
         $cliente = new Cliente();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `cliente` WHERE `ID`= $id AND `BORRADOLOGICO` = 1;";
+        $sql = "SELECT * FROM cliente 
+                LEFT JOIN historial_cliente 
+                ON cliente.ID_CLIENTE = historial_cliente.ID_CLIENTE 
+                LEFT JOIN formulario_reparacion 
+                ON cliente.ID_CLIENTE = formulario_reparacion.ID_CLIENTE 
+                WHERE cliente.ID_CLIENTE = $id AND formulario_reparacion.BORRADOLOGICO = 1";
+
+
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
             while($fila=$resultado->fetch_assoc())
             {
-                $cliente->setId($fila['ID']);
+                $cliente->setId($fila['ID_CLIENTE']);
                 $cliente->setNombre($fila['NOMBRE']);
                 $cliente->setCedula($fila['CEDULA']);
                 $cliente->setTelefono($fila['TELEFONO']);
@@ -58,7 +65,7 @@ class ClienteM
                 $cliente->setEncargado($fila['ENCARGADO']);
                 $cliente->setDispositivo($fila['DISPOSITIVO']);
                 $cliente->setModelo($fila['MODELO']);
-                $cliente->setProgreso($fila['PROGRESO']);
+                $cliente->setProgreso($fila['ESTATUS']);
                 $cliente->setBorradoLogico($fila['BORRADOLOGICO']);
             }
         }
@@ -73,14 +80,20 @@ class ClienteM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `cliente` WHERE `NOMBRE`= '$nombre' AND `BORRADOLOGICO` = 1;";
+        $sql="SELECT * FROM cliente 
+            LEFT JOIN historial_cliente 
+            ON cliente.ID_CLIENTE = historial_cliente.ID_CLIENTE 
+            LEFT JOIN formulario_reparacion 
+            ON cliente.ID_CLIENTE = formulario_reparacion.ID_CLIENTE 
+            WHERE cliente.NOMBRE = '$nombre' AND formulario_reparacion.BORRADOLOGICO = 1";
+
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
             while($fila=$resultado->fetch_assoc())
             {
                 $cliente = new Cliente();
-                $cliente->setId($fila['ID']);
+                $cliente->setId($fila['ID_CLIENTE']);
                 $cliente->setNombre($fila['NOMBRE']);
                 $cliente->setCedula($fila['CEDULA']);
                 $cliente->setTelefono($fila['TELEFONO']);
@@ -89,7 +102,7 @@ class ClienteM
                 $cliente->setEncargado($fila['ENCARGADO']);
                 $cliente->setDispositivo($fila['DISPOSITIVO']);
                 $cliente->setModelo($fila['MODELO']);
-                $cliente->setProgreso($fila['PROGRESO']);
+                $cliente->setProgreso($fila['ESTATUS']);
                 $cliente->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$cliente;
             }
@@ -105,14 +118,20 @@ class ClienteM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `cliente` WHERE `CEDULA`= '$cedula' AND `BORRADOLOGICO` = 1;";
+        $sql="SELECT * FROM cliente 
+            LEFT JOIN historial_cliente 
+            ON cliente.ID_CLIENTE = historial_cliente.ID_CLIENTE 
+            LEFT JOIN formulario_reparacion 
+            ON cliente.ID_CLIENTE = formulario_reparacion.ID_CLIENTE 
+            WHERE cliente.CEDULA = '$cedula' AND formulario_reparacion.BORRADOLOGICO = 1;";
+
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
             while($fila=$resultado->fetch_assoc())
             {
                 $cliente = new Cliente();
-                $cliente->setId($fila['ID']);
+                $cliente->setId($fila['ID_CLIENTE']);
                 $cliente->setNombre($fila['NOMBRE']);
                 $cliente->setCedula($fila['CEDULA']);
                 $cliente->setTelefono($fila['TELEFONO']);
@@ -121,7 +140,7 @@ class ClienteM
                 $cliente->setEncargado($fila['ENCARGADO']);
                 $cliente->setDispositivo($fila['DISPOSITIVO']);
                 $cliente->setModelo($fila['MODELO']);
-                $cliente->setProgreso($fila['PROGRESO']);
+                $cliente->setProgreso($fila['ESTATUS']);
                 $cliente->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$cliente;
             }
@@ -137,14 +156,19 @@ class ClienteM
     {
         $todos=array();
         $conexion= new Conexion();
-        $sql="SELECT * FROM `cliente` WHERE BORRADOLOGICO=1;";
+        $sql="SELECT * FROM `cliente`
+            LEFT JOIN historial_cliente 
+            ON cliente.ID_CLIENTE = historial_cliente.ID_CLIENTE 
+            LEFT JOIN formulario_reparacion 
+            ON cliente.ID_CLIENTE = formulario_reparacion.ID_CLIENTE 
+            WHERE BORRADOLOGICO=1;";
         $resultado=$conexion->Ejecutar($sql);
         if(mysqli_num_rows($resultado)>0)
         {
             while($fila=$resultado->fetch_assoc())
             {
                 $cliente = new Cliente();
-                $cliente->setId($fila['ID']);
+                $cliente->setId($fila['ID_CLIENTE']);
                 $cliente->setNombre($fila['NOMBRE']);
                 $cliente->setCedula($fila['CEDULA']);
                 $cliente->setTelefono($fila['TELEFONO']);
@@ -153,7 +177,7 @@ class ClienteM
                 $cliente->setEncargado($fila['ENCARGADO']);
                 $cliente->setDispositivo($fila['DISPOSITIVO']);
                 $cliente->setModelo($fila['MODELO']);
-                $cliente->setProgreso($fila['PROGRESO']);
+                $cliente->setProgreso($fila['ESTATUS']);
                 $cliente->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$cliente;
             }
@@ -177,7 +201,7 @@ class ClienteM
                       `ENCARGADO`='".$cliente->getEncargado()."',
                       `DISPOSITIVO`='".$cliente->getDispositivo()."',
                       `MODELO`='".$cliente->getModelo()."',
-                      `PROGRESO`='".$cliente->getProgreso()."'
+                      `ESTATUS`='".$cliente->getProgreso()."'
                   WHERE `ID` = ".$cliente->getId().";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
@@ -190,9 +214,9 @@ class ClienteM
     {
         $retVal=false;
         $conexion= new Conexion();
-        $sql="UPDATE `cliente` SET 
+        $sql="UPDATE `formulario_reparacion` SET 
                       `BORRADOLOGICO`='0' 
-                  WHERE `ID` = ".$id.";";
+                  WHERE `ID_CLIENTE` = ".$id.";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();

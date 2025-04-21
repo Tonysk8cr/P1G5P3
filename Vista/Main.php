@@ -40,21 +40,21 @@
         <div class="list-group col-4" id="grupo-lista" role="tablist">
             <a
                     id="elemento1"
-                    href="InicioSesion.php"
+                    href="index.php?controller=index&action=inicioSesion"
                     class="list-group-item list-group-item-action active"
             >
                 Iniciar Sesión
             </a>
             <a
                     id="elemento2"
-                    href="Clientes.php" tab
+                    href="index.php?controller=index&action=clientes" tab
                     class="list-group-item list-group-item-action"
             >
                 Clientes
             </a>
             <a
                     id="elemento3"
-                    href="FormulariosReparacion.php"
+                    href="index.php?controller=index&action=formulariosReparacion"
                     class="list-group-item list-group-item-action"
             >
                 Formularios de Reparación

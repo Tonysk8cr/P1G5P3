@@ -1,7 +1,7 @@
 <?php
-require_once('../Modelo/Entidades/Cliente.php');
-require_once('../Modelo/Metodos/ClienteM.php');
-require_once('../Modelo/Conexion.php');
+require_once(__DIR__ . '/../Modelo/Entidades/Cliente.php');
+require_once(__DIR__ . '/../Modelo/Metodos/ClienteM.php');
+require_once(__DIR__ . '/../Modelo/Conexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cliente = new Cliente();
@@ -67,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="Clientes.php">Volver a Clientes</a>
-                            <a class="dropdown-item" href="Main.php">Volver al Main</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=Clientes"">Volver a Clientes</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=index"">Volver al Main</a>
                         </div>
                     </li>
                 </ul>

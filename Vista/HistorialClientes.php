@@ -21,8 +21,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="Clientes.php">Volver a Clientes</a>
-                            <a class="dropdown-item" href="Main.php">Volver al Main</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=Clientes">Volver a Clientes</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=Index">Volver al Main</a>
                         </div>
                     </li>
                 </ul>

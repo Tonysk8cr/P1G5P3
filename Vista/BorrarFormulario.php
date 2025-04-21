@@ -1,5 +1,5 @@
 <?php
-require_once('../Modelo/Conexion.php');
+require_once(__DIR__ . '/../Modelo/Conexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
     if (!empty($_POST["IDCliente"])) {
@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="FormulariosReparacion.php">Volver a Formularios de Reparacion</a>
-                            <a class="dropdown-item" href="Main.php">Volver al Main</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=FormulariosReparacion">Volver a Formularios de Reparacion</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=Index">Volver al Main</a>
                         </div>
                     </li>
                 </ul>

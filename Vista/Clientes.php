@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Main.php">Volver al Main
+                        <a class="nav-link active" href="index.php?controller=index&action=Index">Volver al Main
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
@@ -43,7 +43,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Ver Historial de Clientes</h5>
                     <p class="card-text">Consulta el registro completo de interacciones, compras y actividad de cada cliente para un mejor seguimiento y atención personalizada.</p>
-                    <a href="HistorialClientes.php" class="btn btn-light">Ver Historial</a>
+                    <a href="index.php?controller=index&action=HistorialClientes" class="btn btn-light">Ver Historial</a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Ingresar Clientes</h5>
                     <p class="card-text">Añade nuevos clientes al sistema de forma rápida y sencilla, registrando su información básica para futuras gestiones.</p>
-                    <a href="IngresoCliente.php" class="btn btn-light">Ingresar Cliente</a>
+                    <a href="index.php?controller=index&action=IngresoCliente" class="btn btn-light">Ingresar Cliente</a>
                 </div>
             </div>
         </div>

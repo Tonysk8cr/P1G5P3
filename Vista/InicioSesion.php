@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Main.php">Volver al Main
+                        <a class="nav-link active" href="index.php?controller=index&action=index">Volver al Main
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center text-white">Iniciar Sesión</h5>
-                    <form action="Main.php" method="post">
+                    <form action="index.php?controller=index&action=index" method="post">
                         <div class="mb-3 text-white">
                             <label for="email" class="form-label">Correo electrónico</label>
                             <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" required>
