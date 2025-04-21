@@ -149,8 +149,9 @@
     </div>
 
     <div class="row text-center">
-        <div class="col-md-3"><br></div>
-
+        <div class="col-md-3">
+            <br>
+        </div>
         <div class="col-md-3">
             <br><br>
             <div class="card border-success mb-3 text-white text-center" style="max-width: 25rem;">
@@ -184,8 +185,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-md-3"><br></div>
+        <div class="col-md-3">
+            <br>
+        </div>
     </div>
 
 </div>

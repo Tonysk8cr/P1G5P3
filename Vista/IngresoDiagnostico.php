@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_cliente"]) && isset
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Actualizar Status</title>
+    <title>INGRESAR DIAGNOSTICO</title>
     <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -56,39 +56,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_cliente"]) && isset
         <div class="col-md-4">
             <br>
         </div>
-        <div class="col-md-4 text-center">
-            <br>
-            <br>
-            <br>
-            <form method="post">
-                <!-- ID Cliente -->
-                <div class="form-group">
-                    <label for="user-name"><strong>ID Cliente</strong></label>
-                    <input
-                            type="number"
-                            name="IDCliente"
-                            class="form-control form-control-sm"
-                    />
-                    <br>
-                    <!-- Opciones Status -->
+        <!--Forms para busqueda-->
+        <div class="row">
+            <div class="col-md-4">
+                <br>
+            </div>
+            <div class="col-md-4 text-center">
+                <br>
+                <br>
+                <form method="post">
+                    <!-- ID Cliente -->
                     <div class="form-group">
-                        <label for="select-group"><strong>Seleccione el status actual del equipo</strong></label>
-                        <select name="Status" class="form-control">
-                            <option value="EnEspera">En Espera...</option>
-                            <option value="EnProceso">En Proceso</option>
-                            <option value="Listo">Listo</option>
-                        </select>
+                        <label for="user-name"><strong>ID Cliente</strong></label>
+                        <input
+                                type="number"
+                                name="IDCliente"
+                                class="form-control form-control-sm"
+                        />
+                        <br>
+                        <!-- Diagnostico-->
+                        <div class="form-group">
+                            <label for="user-comment"><strong>Diagnostico</strong></label>
+                            <textarea
+                                    type="text"
+                                    name="Diagnostico"
+                                    class="form-control"
+                            ></textarea>
+                        </div>
+                        <br>
+                        <a><button type="button" class="btn btn-outline-success">Ingresar Diagnostico</button></a>
+                        <br>
+                        <br>
+                        <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
                     </div>
-                    <br>
-                    <a><button type="button" class="btn btn-outline-success">Actualizar Status</button></a>
-                    <br>
-                    <br>
-                    <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <br>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <br>
+            </div>
         </div>
     </div>
 
