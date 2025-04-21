@@ -66,24 +66,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
             <br>
             <br>
             <br>
-            <form method="POST">
-                <label>ID Cliente</label>
-                <input type="number" name="IDCliente" required>
-                <br>
-                <select name="estado" required>
-                    <option value="En espera">En espera</option>
-                    <option value="En reparación">En reparación</option>
-                    <option value="Listo">Listo</option>
-                    <option value="Entregado">Entregado</option>
-                </select>
-                <br>
-                <button type="submit" class="btn btn-warning">Actualizar Estado</button>
-                <br>
-                <button type="submit" name="visualizar" class="btn btn-info">Visualizar Actualización</button>
+            <form method="post">
+                <!-- ID Cliente -->
+                <div class="form-group">
+                    <label for="user-name"><strong>ID Cliente</strong></label>
+                    <input
+                            type="number"
+                            name="IDCliente"
+                            class="form-control form-control-sm"
+                    />
+                    <br>
+                    <!-- Opciones Status -->
+                    <div class="form-group">
+                        <label for="select-group"><strong>Seleccione el status actual del equipo</strong></label>
+                        <select name="Status" class="form-control">
+                            <option value="EnEspera">En Espera...</option>
+                            <option value="EnProceso">En Proceso</option>
+                            <option value="Listo">Listo</option>
+                        </select>
+                    </div>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-success">Actualizar Status</button></a>
+                    <br>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                </div>
             </form>
-
-
-
         </div>
         <div class="col-md-4">
             <br>

@@ -71,7 +71,7 @@
     <!--Acordeones con info sobre la empresa-->
     <div class="row text-center text-white">
         <div class="col-md-12">
-            <h2>TechFix Soluciones</h2>
+            <h3>TechFix Soluciones</h3>
             <br>
             <div class="accordion" id="acordeon-01">
                 <!-- Primer elemento hijo -->
@@ -230,8 +230,8 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <!--JS para ejecuccion de acordeones-->
-<script src="JS%20Especiales/jquery-3.5.0.min.js"></script>
-<script src="JS%20Especiales/popper.min.js"></script>
-<script src="JS%20Especiales/bootstrap.min.js"></script>
+<script src="./JS%20Especiales/jquery-3.5.0.min.js"></script>
+<script src="./JS%20Especiales/popper.min.js"></script>
+<script src="./JS%20Especiales/bootstrap.min.js"></script>
 </body>
 </html>

@@ -22,54 +22,103 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_cliente"]) && isset
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Ingresar Diagnóstico</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Actualizar Status</title>
     <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<ul>
-    <li><strong>VOLVER</strong></li>
-    <a href="index.php?controller=index&action=FormulariosReparacion">Volver a Formularios de Reparacion</a>
-    <a href="index.php?controller=index&action=index">Volver al Main</a>
-</ul>
+<div class="container-fluid">
 
-<div class="container mt-5">
-    <h2>Ingreso de Diagnóstico</h2>
-    <form method="POST">
-        <div class="form-group">
-            <label>ID del Cliente</label>
-            <input type="number" name="id_cliente" class="form-control" required>
+    <!--Navbar-->
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
+            <a class="navbar-brand"><strong>ACTUALIZAR STATUS DE UN EQUIPO</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="index.php?controller=index&action=FormulariosReparacion">Volver a Formularios de Reparacion</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=index">Volver al Main</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--Forms para la busqueda-->
+    <div class="row">
+        <div class="col-md-4">
+            <br>
         </div>
-        <div class="form-group">
-            <label>Diagnóstico</label>
-            <textarea name="diagnostico" class="form-control" required></textarea>
+        <div class="col-md-4 text-center">
+            <br>
+            <br>
+            <br>
+            <form method="post">
+                <!-- ID Cliente -->
+                <div class="form-group">
+                    <label for="user-name"><strong>ID Cliente</strong></label>
+                    <input
+                            type="number"
+                            name="IDCliente"
+                            class="form-control form-control-sm"
+                    />
+                    <br>
+                    <!-- Opciones Status -->
+                    <div class="form-group">
+                        <label for="select-group"><strong>Seleccione el status actual del equipo</strong></label>
+                        <select name="Status" class="form-control">
+                            <option value="EnEspera">En Espera...</option>
+                            <option value="EnProceso">En Proceso</option>
+                            <option value="Listo">Listo</option>
+                        </select>
+                    </div>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-success">Actualizar Status</button></a>
+                    <br>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                </div>
+            </form>
         </div>
+        <div class="col-md-4">
+            <br>
+        </div>
+    </div>
+
+    <!--Tabla con la info de la busqueda-->
+    <div class="row">
         <br>
-        <button type="submit" class="btn btn-primary">Guardar Diagnóstico</button>
         <br>
-        <button type="submit" name="visualizar" class="btn btn-info">Visualizar Actualización</button>
-    </form>
+    </div>
+    <div class="row text-center">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre Cliente</th>
+                <th scope="col">Cédula</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Correo electronico</th>
+                <th scope="col">Observaciónes</th>
+                <th scope="col">Encargado de reparación</th>
+                <th scope="col">Diagnostico</th>
+                <th scope="col">Dispositivo</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Precio final por reparación</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
 </div>
-
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nombre Cliente</th>
-        <th scope="col">Cédula</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Correo electronico</th>
-        <th scope="col">Observaciónes</th>
-        <th scope="col">Encargado de reparación</th>
-        <th scope="col">Diagnostico</th>
-        <th scope="col">Dispositivo</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Precio final por reparación</th>
-        <th scope="col">Status</th>
-    </tr>
-    </thead>
-</table>
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>

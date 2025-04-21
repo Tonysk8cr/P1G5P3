@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
                     <a><button type="button" class="btn btn-outline-light">Buscar Informacion</button></a>
                     <br>
                     <br>
-                    <a><button type="submit" name="eliminar" class="btn btn-danger">Eliminar Formulario</button></a>
+                    <a><button type="submit" name="eliminar" class="btn btn-outline-danger">Eliminar Formulario</button></a>
                 </div>
             </form>
         </div>
