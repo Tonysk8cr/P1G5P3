@@ -42,11 +42,12 @@
                 <th scope="col">Correo electronico</th>
                 <th scope="col">Observaciónes</th>
                 <th scope="col">Encargado de reparación</th>
-                <th scope="col">Diagnostico</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Modelo</th>
+                <th scope="col">Diagnostico</th>
                 <th scope="col">Precio final por reparación</th>
                 <th scope="col">Status</th>
+                <th scope="col">Fecha de ingreso</th>
             </tr>
             <tr>
                 <td>
@@ -71,19 +72,22 @@
                     Kleyber
                 </td>
                 <td>
-                    dasidasghfduhasuikd
-                </td>
-                <td>
                     Celular
                 </td>
                 <td>
                     Samsung S24
                 </td>
                 <td>
+                    sadasdasasd
+                </td>
+                <td>
                     238904
                 </td>
                 <td>
                     En Proceso
+                </td>
+                <td>
+                    1233412
                 </td>
             </tr>
             </thead>

@@ -2,15 +2,10 @@
 
 class Usuario
 {
+    //Atributos
     private $id;
     private $correo;
     private $contrasena;
-    private $rol;
-    private $borradoLogico;
-
-    private $progreso;
-
-
 
     /**
      * @return mixed
@@ -20,10 +15,11 @@ class Usuario
         return $this->id;
     }
 
+    //Get y Set
     /**
      * @param mixed $id
      */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -39,7 +35,7 @@ class Usuario
     /**
      * @param mixed $correo
      */
-    public function setCorreo($correo)
+    public function setCorreo($correo): void
     {
         $this->correo = $correo;
     }
@@ -55,50 +51,8 @@ class Usuario
     /**
      * @param mixed $contrasena
      */
-    public function setContrasena($contrasena)
+    public function setContrasena($contrasena): void
     {
         $this->contrasena = $contrasena;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getRol()
-    {
-        return $this->rol;
-    }
-
-    /**
-     * @param mixed $rol
-     */
-    public function setRol($rol)
-    {
-        $this->rol = $rol;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBorradoLogico()
-    {
-        return $this->borradoLogico;
-    }
-
-    /**
-     * @param mixed $borradoLogico
-     */
-    public function setBorradoLogico($borradoLogico)
-    {
-        $this->borradoLogico = $borradoLogico;
-    }
-
-    public function setProgreso($p) {
-        $this->progreso = $p;
-    }
-
-    public function getProgreso() {
-        return $this->progreso;
-    }
-
-
 }

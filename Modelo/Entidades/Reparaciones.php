@@ -2,112 +2,28 @@
 
 class Reparaciones
 {
-    private $id;
-    private $dispositivo;
-    private $modelo;
-    private $encargado;
-    private $idCliente;
-    private $observaciones;
+    //Atributos
+    private $idFormulario;
     private $diagnostico;
-    private $precio;
-    private $estado;
+    private $status;
+    private $fechaIngreso;
     private $borradoLogico;
 
-
+    //Get y Set
     /**
      * @return mixed
      */
-    public function getId()
+    public function getIdFormulario()
     {
-        return $this->id;
+        return $this->idFormulario;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $idFormulario
      */
-    public function setId($id)
+    public function setIdFormulario($idFormulario): void
     {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDispositivo()
-    {
-        return $this->dispositivo;
-    }
-
-    /**
-     * @param mixed $dispositivo
-     */
-    public function setDispositivo($dispositivo)
-    {
-        $this->dispositivo = $dispositivo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getModelo()
-    {
-        return $this->modelo;
-    }
-
-    /**
-     * @param mixed $modelo
-     */
-    public function setModelo($modelo)
-    {
-        $this->modelo = $modelo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEncargado()
-    {
-        return $this->encargado;
-    }
-
-    /**
-     * @param mixed $encargado
-     */
-    public function setEncargado($encargado)
-    {
-        $this->encargado = $encargado;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdCliente()
-    {
-        return $this->idCliente;
-    }
-
-    /**
-     * @param mixed $idCliente
-     */
-    public function setIdCliente($idCliente)
-    {
-        $this->idCliente = $idCliente;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObservaciones()
-    {
-        return $this->observaciones;
-    }
-
-    /**
-     * @param mixed $observaciones
-     */
-    public function setObservaciones($observaciones)
-    {
-        $this->observaciones = $observaciones;
+        $this->idFormulario = $idFormulario;
     }
 
     /**
@@ -121,7 +37,7 @@ class Reparaciones
     /**
      * @param mixed $diagnostico
      */
-    public function setDiagnostico($diagnostico)
+    public function setDiagnostico($diagnostico): void
     {
         $this->diagnostico = $diagnostico;
     }
@@ -129,33 +45,33 @@ class Reparaciones
     /**
      * @return mixed
      */
-    public function getPrecio()
+    public function getStatus()
     {
-        return $this->precio;
+        return $this->status;
     }
 
     /**
-     * @param mixed $precio
+     * @param mixed $status
      */
-    public function setPrecio($precio)
+    public function setStatus($status): void
     {
-        $this->precio = $precio;
+        $this->status = $status;
     }
 
     /**
      * @return mixed
      */
-    public function getEstado()
+    public function getFechaIngreso()
     {
-        return $this->estado;
+        return $this->fechaIngreso;
     }
 
     /**
-     * @param mixed $estado
+     * @param mixed $fechaIngreso
      */
-    public function setEstado($estado)
+    public function setFechaIngreso($fechaIngreso): void
     {
-        $this->estado = $estado;
+        $this->fechaIngreso = $fechaIngreso;
     }
 
     /**
@@ -169,7 +85,7 @@ class Reparaciones
     /**
      * @param mixed $borradoLogico
      */
-    public function setBorradoLogico($borradoLogico)
+    public function setBorradoLogico($borradoLogico): void
     {
         $this->borradoLogico = $borradoLogico;
     }

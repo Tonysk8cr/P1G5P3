@@ -2,32 +2,33 @@
 
 class Cliente
 {
-    private $id;
+    //Atributos
+    private $idCliente;
     private $nombre;
     private $cedula;
     private $telefono;
     private $correo;
-    private $borradoLogico;
     private $observaciones;
     private $encargado;
     private $dispositivo;
     private $modelo;
-    private $progreso;
+    private $borradoLogico;
 
+    //Get y Set
     /**
      * @return mixed
      */
-    public function getId()
+    public function getIdCliente()
     {
-        return $this->id;
+        return $this->idCliente;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $idCliente
      */
-    public function setId($id)
+    public function setIdCliente($idCliente): void
     {
-        $this->id = $id;
+        $this->idCliente = $idCliente;
     }
 
     /**
@@ -41,7 +42,7 @@ class Cliente
     /**
      * @param mixed $nombre
      */
-    public function setNombre($nombre)
+    public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
     }
@@ -57,7 +58,7 @@ class Cliente
     /**
      * @param mixed $cedula
      */
-    public function setCedula($cedula)
+    public function setCedula($cedula): void
     {
         $this->cedula = $cedula;
     }
@@ -73,7 +74,7 @@ class Cliente
     /**
      * @param mixed $telefono
      */
-    public function setTelefono($telefono)
+    public function setTelefono($telefono): void
     {
         $this->telefono = $telefono;
     }
@@ -89,9 +90,73 @@ class Cliente
     /**
      * @param mixed $correo
      */
-    public function setCorreo($correo)
+    public function setCorreo($correo): void
     {
         $this->correo = $correo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * @param mixed $observaciones
+     */
+    public function setObservaciones($observaciones): void
+    {
+        $this->observaciones = $observaciones;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEncargado()
+    {
+        return $this->encargado;
+    }
+
+    /**
+     * @param mixed $encargado
+     */
+    public function setEncargado($encargado): void
+    {
+        $this->encargado = $encargado;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDispositivo()
+    {
+        return $this->dispositivo;
+    }
+
+    /**
+     * @param mixed $dispositivo
+     */
+    public function setDispositivo($dispositivo): void
+    {
+        $this->dispositivo = $dispositivo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    /**
+     * @param mixed $modelo
+     */
+    public function setModelo($modelo): void
+    {
+        $this->modelo = $modelo;
     }
 
     /**
@@ -105,45 +170,8 @@ class Cliente
     /**
      * @param mixed $borradoLogico
      */
-    public function setBorradoLogico($borradoLogico)
+    public function setBorradoLogico($borradoLogico): void
     {
         $this->borradoLogico = $borradoLogico;
     }
-
-    public function setProgreso($p) {
-        $this->progreso = $p;
-    }
-
-    public function getProgreso() {
-        return $this->progreso;
-    }
-
-    public function setObservaciones($o) {
-        $this->observaciones = $o;
-    }
-    public function getObservaciones() {
-        return $this->observaciones;
-    }
-
-    public function setEncargado($e) {
-        $this->encargado = $e;
-    }
-    public function getEncargado() {
-        return $this->encargado;
-    }
-
-    public function setDispositivo($d) {
-        $this->dispositivo = $d;
-    }
-    public function getDispositivo() {
-        return $this->dispositivo;
-    }
-
-    public function setModelo($m) {
-        $this->modelo = $m;
-    }
-    public function getModelo() {
-        return $this->modelo;
-    }
-
 }
