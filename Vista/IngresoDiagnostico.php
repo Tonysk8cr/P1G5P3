@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_cliente"]) && isset
     <!--Navbar-->
     <div class="row">
         <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
-            <a class="navbar-brand"><strong>ACTUALIZAR STATUS DE UN EQUIPO</strong></a>
+            <a class="navbar-brand"><strong>INGRESAR DIAGNOSTICO</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
