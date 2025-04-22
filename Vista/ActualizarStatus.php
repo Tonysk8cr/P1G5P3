@@ -86,10 +86,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
                         </select>
                     </div>
                     <br>
-                    <a><button type="button" class="btn btn-outline-success">Actualizar Status</button></a>
+                    <a><button type="button" id="ActualizarStatus" class="btn btn-outline-success">Actualizar Status</button></a>
                     <br>
                     <br>
-                    <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                    <a><button type="button" id="VisualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
                 </div>
             </form>
         </div>
