@@ -9,25 +9,15 @@ class ReparacionesM
         $retVal=false;
         $conexion= new Conexion();
         $sql="INSERT INTO `formulario_reparacion`(
-                       `DISPOSITIVO`, 
-                       `MODELO`, 
-                       `ENCARGADO`, 
-                       `ID_CLIENTE`, 
-                       `OBSERVACIONES`, 
                        `DIAGNOSTICO`, 
-                       `PRECIO_ESTIMADO`,
-                       `ESTATUS`,
+                       `PRECIO`,
+                       `STATUS`,
                        `BORRADOLOGICO`) 
                 VALUES (
-                        '".$reparaciones->getDispositivo()."',
-                        '".$reparaciones->getModelo()."',
-                        '".$reparaciones->getEncargado()."',
-                        '".$reparaciones->getIdCliente()."',
-                        '".$reparaciones->getObservaciones()."',
                         '".$reparaciones->getDiagnostico()."',
                         '".$reparaciones->getPrecio()."',
-                        '".$reparaciones->getEstado()."',
-                        '1')";
+                         ".$reparaciones->getStatus()."
+";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
@@ -53,15 +43,10 @@ class ReparacionesM
         {
             while($fila=$resultado->fetch_assoc())
             {
-                $reparaciones->setId($fila['ID_FORMULARIO']);
-                $reparaciones->setDispositivo($fila['DISPOSITIVO']);
-                $reparaciones->setModelo($fila['MODELO']);
-                $reparaciones->setEncargado($fila['ENCARGADO']);
-                $reparaciones->setIdCliente($fila['ID_CLIENTE']);
-                $reparaciones->setObservaciones($fila['OBSERVACIONES']);
+                $reparaciones->setIdFormulario($fila['ID_FORMULARIO']);
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
-                $reparaciones->setPrecio($fila['PRECIO_ESTIMADO']);
-                $reparaciones->setEstado($fila['ESTATUS']);
+                $reparaciones->setPrecio($fila['PRECIO']);
+                $reparaciones->setStatus($fila['STATUS']);
                 $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
             }
         }
@@ -92,15 +77,9 @@ class ReparacionesM
             while($fila=$resultado->fetch_assoc())
             {
                 $reparaciones = new Reparaciones();
-                $reparaciones->setId($fila['ID_FORMULARIO']);
-                $reparaciones->setDispositivo($fila['DISPOSITIVO']);
-                $reparaciones->setModelo($fila['MODELO']);
-                $reparaciones->setEncargado($fila['ENCARGADO']);
-                $reparaciones->setIdCliente($fila['ID_CLIENTE']);
-                $reparaciones->setObservaciones($fila['OBSERVACIONES']);
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
-                $reparaciones->setPrecio($fila['PRECIO_FINAL']);
-                $reparaciones->setEstado($fila['ESTATUS']);
+                $reparaciones->setPrecio($fila['PRECIO']);
+                $reparaciones->setStatus($fila['STATUS']);
                 $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$reparaciones;
             }
@@ -127,16 +106,11 @@ class ReparacionesM
         {
             while($fila=$resultado->fetch_assoc())
             {
-                $reparaciones = new Reparaciones();
-                $reparaciones->setId($fila['ID_FORMULARIO']);
-                $reparaciones->setDispositivo($fila['DISPOSITIVO']);
-                $reparaciones->setModelo($fila['MODELO']);
-                $reparaciones->setEncargado($fila['ENCARGADO']);
-                $reparaciones->setIdCliente($fila['ID_CLIENTE']);
-                $reparaciones->setObservaciones($fila['OBSERVACIONES']);
+                $reparaciones = new Reparaciones();;
+                $reparaciones->setIdFormulario($fila['ID_FORMULARIO']);
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
-                $reparaciones->setPrecio($fila['PRECIO_FINAL']);
-                $reparaciones->setEstado($fila['ESTATUS']);
+                $reparaciones->setPrecio($fila['PRECIO']);
+                $reparaciones->setStatus($fila['STATUS']);
                 $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
                 $todos[]=$reparaciones;
             }
@@ -152,15 +126,10 @@ class ReparacionesM
         $retVal=false;
         $conexion= new Conexion();
         $sql="UPDATE `formulario_reparacion` SET 
-                      `DISPOSITIVO`='".$reparaciones->getDispositivo()."',
-                      `MODELO`='".$reparaciones->getModelo()."',
-                      `ENCARGADO`='".$reparaciones->getEncargado()."',
-                      `ID_CLIENTE`='".$reparaciones->getIdCliente()."',
-                      `OBSERVACIONES`='".$reparaciones->getObservaciones()."',
                       `DIAGNOSTICO`='".$reparaciones->getDiagnostico()."',
-                      `PRECIO_ESTIMADO`='".$reparaciones->getPrecio()."',
-                      `ESTATUS`='".$reparaciones->getEstado()."'
-                  WHERE `ID` = ".$reparaciones->getId().";";
+                      `PRECIO`='".$reparaciones->getPrecio()."',
+                      `STATUS`='".$reparaciones->getStatus()."'
+                  WHERE `ID` = ".$reparaciones->getIdFormulario().";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();

@@ -14,9 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cliente->setDispositivo($_POST["Dispositivo"]);
     $cliente->setModelo($_POST["Modelo"]);
 
-    $cliente->setEstado(1); // Estado activo o predeterminado
-    $cliente->setProgreso("En espera");
-
     $metodo = new ClienteM();
     $conexion = new Conexion();
 

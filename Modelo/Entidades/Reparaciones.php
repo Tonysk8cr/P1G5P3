@@ -6,7 +6,8 @@ class Reparaciones
     private $idFormulario;
     private $diagnostico;
     private $status;
-    private $fechaIngreso;
+    private $precio;
+
     private $borradoLogico;
 
     //Get y Set
@@ -61,17 +62,17 @@ class Reparaciones
     /**
      * @return mixed
      */
-    public function getFechaIngreso()
+    public function getPrecio()
     {
-        return $this->fechaIngreso;
+        return $this->precio;
     }
 
     /**
-     * @param mixed $fechaIngreso
+     * @param mixed $precio
      */
-    public function setFechaIngreso($fechaIngreso): void
+    public function setPrecio($precio): void
     {
-        $this->fechaIngreso = $fechaIngreso;
+        $this->precio = $precio;
     }
 
     /**

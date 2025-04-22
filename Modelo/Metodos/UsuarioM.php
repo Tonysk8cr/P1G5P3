@@ -14,8 +14,6 @@ class UsuarioM
             $usuario->setId($fila['ID_USUARIO']);
             $usuario->setCorreo($fila['CORREO']);
             $usuario->setContrasena($fila['CONTRASENA']);
-            $usuario->setRol($fila['ROL']);
-            $usuario->setBorradoLogico($fila['BORRADOLOGICO']);
             $conexion->Cerrar();
             return $usuario;
         }
