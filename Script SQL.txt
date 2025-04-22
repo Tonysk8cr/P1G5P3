@@ -1,4 +1,4 @@
---Tabla de clientes
+Tabla de clientes
 CREATE TABLE CLIENTE (
     ID_CLIENTE INT AUTO_INCREMENT PRIMARY KEY,
     NOMBRE VARCHAR(200) NOT NULL,
@@ -8,10 +8,10 @@ CREATE TABLE CLIENTE (
     OBSERVACIONES VARCHAR(800),
     ENCARGADO VARCHAR(100),
     DISPOSITIVO VARCHAR(50),
-    MODELO VARCHAR(120)
+    MODELO VARCHAR(120),
     BORRADOLOGICO TINYINT NOT NULL DEFAULT 1
 );
-
+ 
 -- Tabla de formularios de reparación
 CREATE TABLE FORMULARIO_REPARACION (
     ID_FORMULARIO INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,9 +21,9 @@ CREATE TABLE FORMULARIO_REPARACION (
     FECHA_INGRESO DATE,
     BORRADOLOGICO TINYINT NOT NULL DEFAULT 1
 );
-
+ 
 --Tabla para los Intermedia (Muchos a Muchos)
-
+ 
 CREATE TABLE Clientes_Formularios (
     CLIENTE_id INT,
     FORMULARIO_id INT,
@@ -31,26 +31,10 @@ CREATE TABLE Clientes_Formularios (
     FOREIGN KEY (CLIENTE_id) REFERENCES CLIENTE(ID_CLIENTE),
     FOREIGN KEY (FORMULARIO_id) REFERENCES FORMULARIO_REPARACION(ID_FORMULARIO)
 );
-
+ 
 --Tabla para los usuarios
 CREATE TABLE USUARIO (
     ID_USUARIO INT AUTO_INCREMENT PRIMARY KEY,
     CORREO VARCHAR(320) NOT NULL UNIQUE,
     CONTRASENA VARCHAR(255) NOT NULL,
 );
-
--- Datos de prueba
-INSERT INTO cliente (NOMBRE, CEDULA, TELEFONO, CORREO, OBSERVACIONES, ENCARGADO, DISPOSITIVO) VALUES
-('Cristian', '111111111', '88888888', 'cristian@mail.com', 'Cliente frecuente', 'Juan Pérez', 'Celular'),
-('Mariana', '222222222', '70001111', 'mariana@gmail.com', 'Viene por segunda vez', 'María Rodríguez', 'Tablet'),
-('Kevin', '333333333', '60000000', 'kevin@hotmail.com', 'Revisión pendiente', 'Pablo Ramírez', 'Computadora');
-
-INSERT INTO formulario_reparacion (ID_CLIENTE, DIAGNOSTICO, PRECIO_ESTIMADO, ESTATUS, FECHA_INGRESO, TECNICO_ASIGNADO) VALUES
-(1, 'Pantalla rota', 25000, 'Pendiente', '2024-11-05', 'Juan Pérez'),
-(2, 'Problema de batería', 18000, 'En proceso', '2024-11-10', 'Ana Morales'),
-(3, 'No enciende el dispositivo', 0, 'Diagnóstico', '2024-11-12', 'Pablo Ramírez');
-
-INSERT INTO historial_cliente (ID_CLIENTE, ID_FORMULARIO, MODELO, PRECIO_FINAL, ESTATUS) VALUES
-(1, 1, 'Samsung S24', 238904, 'En Proceso');
-
-
