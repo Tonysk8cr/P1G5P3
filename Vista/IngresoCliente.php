@@ -18,24 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conexion = new Conexion();
 
     if ($metodo->Nuevo($cliente, $conexion)) {
-        $id_cliente = $conexion->UltimoIdInsertado();
-        $fecha = date("Y-m-d");
-        $tecnico = $_POST["Encargado"];
-        $estado = "1";
-
-        $sql = "INSERT INTO formulario_reparacion (
-                    id_cliente, fecha_ingreso, tecnico_asignado, status ,estado
-                ) VALUES (
-                    '$id_cliente', '$fecha', '$tecnico', 'En espera' ,'$estado'
-                )";
-
-        $conexion->Ejecutar($sql);
-        echo "<script>alert('✅ Cliente y formulario de reparación registrados');</script>";
+        echo "<script>alert('Cliente y formulario de reparación registrados');</script>";
     } else {
-        echo "<script>alert('❌ Error al guardar el cliente');</script>";
+        echo "<script>alert('Error al guardar el cliente');</script>";
     }
-
     $conexion->Cerrar();
+
 }
 ?>
 

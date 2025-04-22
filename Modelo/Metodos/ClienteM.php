@@ -49,7 +49,6 @@ class ClienteM
                 }
             }
         }
-        $conexion->Cerrar();
         return $retVal;
     }
 
