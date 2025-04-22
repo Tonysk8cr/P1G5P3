@@ -10,6 +10,24 @@ class Reparaciones
 
     private $borradoLogico;
 
+    private $fechaIngreso;
+
+    /**
+     * @return mixed
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fechaIngreso;
+    }
+
+    /**
+     * @param mixed $fechaIngreso
+     */
+    public function setFechaIngreso($fechaIngreso): void
+    {
+        $this->fechaIngreso = $fechaIngreso;
+    }
+
     //Get y Set
     /**
      * @return mixed

@@ -7,6 +7,18 @@
     <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<!-- Cargamos los datos que vienen del back-->
+<script src="./Vista/assets/TodosJS.js"></script>
+<script>
+    <?php if(isset($JSONCliente))
+        {
+    ?>
+            var todos='<?php echo $JSONCliente?>';
+            VerHistorialCliente(JSON.parse(todos));
+    <?php
+        }
+    ?>
+</script>
 <div class="container-fluid">
 
     <!--Navbar-->

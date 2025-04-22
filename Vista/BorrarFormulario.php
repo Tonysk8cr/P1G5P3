@@ -31,6 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
 </head>
 
 <body>
+<!--Script de envio de datos al front-->
+<script src="./Vista/assets/BuscarID.js"></script>
+<script>
+    <?php if (isset($JSONReparaciones))
+        {
+    ?>
+            var objetoId='<?php echo $JSONReparaciones?>'
+            BorrarFormulario(JSON.parse(objetoId));
+    <?php
+        }
+    ?>
+</script>
 <div class="container-fluid">
 
     <!--Navbar-->

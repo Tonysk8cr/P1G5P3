@@ -27,60 +27,51 @@ class ReparacionesM
 
     public function BuscarId($id)
     {
+        $reparacion = [];
         $reparaciones = new Reparaciones();
         $conexion = new Conexion();
 
-        $sql = "SELECT fr.* FROM formulario_reparacion fr
-            INNER JOIN clientes_formularios cf ON fr.ID_FORMULARIO = cf.FORMULARIO_id
-            INNER JOIN cliente c ON c.ID_CLIENTE = cf.CLIENTE_id
-            WHERE fr.ID_FORMULARIO = $id AND fr.BORRADOLOGICO = 1";
+        $sql = "SELECT * FROM cliente
+            LEFT JOIN clientes_formularios 
+                ON cliente.ID_CLIENTE = clientes_formularios.CLIENTE_id
+            LEFT JOIN formulario_reparacion 
+                ON formulario_reparacion.ID_FORMULARIO = clientes_formularios.FORMULARIO_id
+            WHERE cliente.BORRADOLOGICO = 1 AND 
+                  cliente.ID_CLIENTE = $id AND 
+                  formulario_reparacion.BORRADOLOGICO = 1";
+
 
         $resultado = $conexion->Ejecutar($sql);
+
         if (mysqli_num_rows($resultado) > 0) {
             while ($fila = $resultado->fetch_assoc()) {
                 $reparaciones->setIdFormulario($fila['ID_FORMULARIO']);
                 $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
                 $reparaciones->setPrecio($fila['PRECIO']);
                 $reparaciones->setStatus($fila['STATUS']);
+                $reparaciones->setFechaIngreso($fila['FECHA_INGRESO']);
                 $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
+
+                //Info que proviene de clientes
+                $cliente = new Cliente();
+                $cliente->setNombre($fila['NOMBRE']);
+                $cliente->setCedula($fila['CEDULA']);
+                $cliente->setTelefono($fila['TELEFONO']);
+                $cliente->setCorreo($fila['CORREO']);
+                $cliente->setObservaciones($fila['OBSERVACIONES']);
+                $cliente->setEncargado($fila['ENCARGADO']);
+                $cliente->setDispositivo($fila['DISPOSITIVO']);
+                $cliente->setModelo($fila['MODELO']);
+
+                //Guardamos como par
+                $reparacion[]=['reparacion' => $reparaciones, 'cliente' => $cliente];
             }
         } else {
-            $reparaciones = null;
+            $reparacion = null;
         }
-
-        $conexion->Cerrar();
-        return $reparaciones;
+        return $reparacion;
     }
 
-
-    public function BuscarTodos()
-    {
-        $todos = array();
-        $conexion = new Conexion();
-
-        $sql = "SELECT fr.* FROM formulario_reparacion fr
-            INNER JOIN clientes_formularios cf ON fr.ID_FORMULARIO = cf.FORMULARIO_id
-            INNER JOIN cliente c ON c.ID_CLIENTE = cf.CLIENTE_id
-            WHERE fr.BORRADOLOGICO = 1";
-
-        $resultado = $conexion->Ejecutar($sql);
-        if (mysqli_num_rows($resultado) > 0) {
-            while ($fila = $resultado->fetch_assoc()) {
-                $reparaciones = new Reparaciones();
-                $reparaciones->setIdFormulario($fila['ID_FORMULARIO']);
-                $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
-                $reparaciones->setPrecio($fila['PRECIO']);
-                $reparaciones->setStatus($fila['STATUS']);
-                $reparaciones->setBorradoLogico($fila['BORRADOLOGICO']);
-                $todos[] = $reparaciones;
-            }
-        } else {
-            $todos = null;
-        }
-
-        $conexion->Cerrar();
-        return $todos;
-    }
 
     public function Actualizar(Reparaciones $reparaciones)
     {

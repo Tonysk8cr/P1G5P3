@@ -1,74 +1,68 @@
     <?php
     session_start();
-    include_once "./Modelo/Conexion.php";
-    include_once "./Modelo/Entidades/Reparaciones.php";
-    include_once "./Modelo/Metodos/ReparacionesM.php";
+    require_once __DIR__ . '/../Modelo/Conexion.php';
+    require_once __DIR__ . '/../Modelo/Entidades/Reparaciones.php';
+    require_once __DIR__ . '/../Modelo/Metodos/ReparacionesM.php';
+    require_once __DIR__ . '/../Modelo/Entidades/Cliente.php';
     class ControladorReparaciones
     {
-        private function ReparacionaJson(Reparaciones $reparaciones)
+        private function ReparacionaJson(Reparaciones $reparaciones, Cliente $cliente)
         {
             $reparacionArray = [
-                'ID_FORMULARIO' => $reparaciones->getID(),
-                'MODELO' => $reparaciones->getModelo(),
-                'ENCARGADO' => $reparaciones->getEncargado(),
-                'ID_CLIENTE' => $reparaciones->getIDCliente(),
-                'OBSERVACIONES' => $reparaciones->getObservaciones(),
+                'ID_FORMULARIO' => $reparaciones->getIdFormulario(),
                 'DIAGNOSTICO' => $reparaciones->getDiagnostico(),
                 'PRECIO' => $reparaciones->getPrecio(),
-                'ESTATUS' => $reparaciones->getEstado(),
-                'BORRADOLOGICO' => $reparaciones->getBorradologico(),
-
+                'ESTATUS' => $reparaciones->getStatus(),
+                'BORRADOLOGICO' => $reparaciones->getBorradoLogico(),
+                'ID_CLIENTE' => $cliente->getIdCliente(),
+                'NOMBRE' => $cliente->getNombre(),
+                'CEDULA' => $cliente->getCedula(),
+                'TELEFONO' => $cliente->getTelefono(),
+                'CORREO' => $cliente->getCorreo(),
+                'OBSERVACIONES' => $cliente->getObservaciones(),
+                'ENCARGADO' => $cliente->getEncargado(),
+                'DISPOSITIVO' => $cliente->getDispositivo(),
+                'MODELO' => $cliente->getModelo(),
             ];
             return json_encode($reparacionArray);
         }
 
-        private function ReparacionJson(array $reparaciones)
+
+        private function ReparacionJson(array $datos)
         {
             $reparacionArray = [];
-            foreach ($reparaciones as $reparacion) {
+            foreach ($datos as $par) {
+                $cliente = $par['cliente'];
+                $reparaciones = $par['reparaciones'];
+
                 $reparacionArray[] = [
-                    'ID_FORMULARIO' => $reparacion->getID(),
-                    'MODELO' => $reparacion->getModelo(),
-                    'ENCARGADO' => $reparacion->getEncargado(),
-                    'ID_CLIENTE' => $reparacion->getIDCliente(),
-                    'OBSERVACIONES' => $reparacion->getObservaciones(),
-                    'DIAGNOSTICO' => $reparacion->getDiagnostico(),
-                    'PRECIO' => $reparacion->getPrecio(),
-                    'ESTATUS' => $reparacion->getEstado(),
-                    'BORRADOLOGICO' => $reparacion->getBorradologico(),
+                    'ID_FORMULARIO' => $reparaciones->getIdFormulario(),
+                    'DIAGNOSTICO' => $reparaciones->getDiagnostico(),
+                    'PRECIO' => $reparaciones->getPrecio(),
+                    'ESTATUS' => $reparaciones->getStatus(),
+                    'BORRADOLOGICO' => $reparaciones->getBorradoLogico(),
+                    'ID_CLIENTE' => $cliente->getIdCliente(),
+                    'NOMBRE' => $cliente->getNombre(),
+                    'CEDULA' => $cliente->getCedula(),
+                    'TELEFONO' => $cliente->getTelefono(),
+                    'CORREO' => $cliente->getCorreo(),
+                    'OBSERVACIONES' => $cliente->getObservaciones(),
+                    'ENCARGADO' => $cliente->getEncargado(),
+                    'DISPOSITIVO' => $cliente->getDispositivo(),
+                    'MODELO' => $cliente->getModelo(),
                 ];
             }
             return json_encode($reparacionArray);
         }
         public function verId()
-            //Funcion para buscar por ID de reparacion
         {
-            //echo "Reparaciones por ID reparacion";
-            $reparaciones = new Reparaciones();
+            echo "Reparaciones por ID reparacion<br>";
             $reparacionesM = new ReparacionesM();
-            $reparaciones = $reparacionesM->BuscarId(1);
-            $JSONReparaciones = $this->ReparacionaJson($reparaciones);
-            //var_dump($JSONReparaciones);
+            $resultado = $reparacionesM->BuscarId(1);
+            $reparacion = $resultado[0]['reparacion'];
+            $cliente = $resultado[0]['cliente'];
+            $JSONReparaciones = $this->ReparacionaJson($reparacion, $cliente);
+            require_once "./Vista/BorrarFormulario.php";
         }
 
-        public function verDispositivo(){
-            //Funcion para buscar por Tipo de dispositivo
-            //echo "Reparaciones Por Dispositivo";
-            $reparaciones = new Reparaciones();
-            $reparacionesM = new ReparacionesM();
-            $reparaciones = $reparacionesM->BuscarDispositivo("Celular");
-            $JSONReparaciones = $this->ReparacionJson($reparaciones);
-            //var_dump($JSONReparaciones);
-        }
-
-        public function buscarTodos()
-            //Funcion poara buscar todos los forms de reparacion
-        {
-            //echo "Reparaciones por todos";
-            $reparaciones = new Reparaciones();
-            $reparacionesM = new ReparacionesM();
-            $reparaciones = $reparacionesM->BuscarTodos();
-            $JSONReparaciones = $this->ReparacionJson($reparaciones);
-            //var_dump($JSONReparaciones);
-        }
     }

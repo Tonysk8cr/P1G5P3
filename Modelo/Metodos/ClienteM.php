@@ -57,58 +57,24 @@ class ClienteM
         return $this->conn->insert_id;
     }
 
-    public function BuscarId($id)
-    {
-        $cliente = new Cliente();
-        $conexion = new Conexion();
-
-        $sql = "SELECT cliente.*, formulario_reparacion.*
-            FROM cliente
-            LEFT JOIN clientes_formularios 
-                ON cliente.ID_CLIENTE = clientes_formularios.CLIENTE_id
-            LEFT JOIN formulario_reparacion 
-                ON formulario_reparacion.ID_FORMULARIO = clientes_formularios.FORMULARIO_id
-            WHERE cliente.ID_CLIENTE = $id AND formulario_reparacion.BORRADOLOGICO = 1";
-
-        $resultado = $conexion->Ejecutar($sql);
-        if (mysqli_num_rows($resultado) > 0) {
-            while ($fila = $resultado->fetch_assoc()) {
-                $cliente->setIdCliente($fila['ID_CLIENTE']);
-                $cliente->setNombre($fila['NOMBRE']);
-                $cliente->setCedula($fila['CEDULA']);
-                $cliente->setTelefono($fila['TELEFONO']);
-                $cliente->setCorreo($fila['CORREO']);
-                $cliente->setObservaciones($fila['OBSERVACIONES']);
-                $cliente->setEncargado($fila['ENCARGADO']);
-                $cliente->setDispositivo($fila['DISPOSITIVO']);
-                $cliente->setModelo($fila['MODELO']);
-                $cliente->setBorradoLogico($fila['BORRADOLOGICO']);
-            }
-        } else {
-            $cliente = null;
-        }
-
-        $conexion->Cerrar();
-        return $cliente;
-    }
-
     public function BuscarTodos()
     {
-        $todos = array();
+        $todos = [];
         $conexion = new Conexion();
 
-        $sql = "SELECT DISTINCT cliente.*
-            FROM cliente
-            LEFT JOIN clientes_formularios 
-                ON cliente.ID_CLIENTE = clientes_formularios.CLIENTE_id
-            LEFT JOIN formulario_reparacion 
-                ON formulario_reparacion.ID_FORMULARIO = clientes_formularios.FORMULARIO_id
-            WHERE cliente.BORRADOLOGICO = 1
-            AND formulario_reparacion.BORRADOLOGICO = 1;";
+        $sql = "SELECT * FROM cliente
+        LEFT JOIN clientes_formularios 
+            ON cliente.ID_CLIENTE = clientes_formularios.CLIENTE_id
+        LEFT JOIN formulario_reparacion 
+            ON formulario_reparacion.ID_FORMULARIO = clientes_formularios.FORMULARIO_id
+        WHERE cliente.BORRADOLOGICO = 1
+        AND formulario_reparacion.BORRADOLOGICO = 1;";
 
         $resultado = $conexion->Ejecutar($sql);
+
         if (mysqli_num_rows($resultado) > 0) {
             while ($fila = $resultado->fetch_assoc()) {
+                // Cliente
                 $cliente = new Cliente();
                 $cliente->setIdCliente($fila['ID_CLIENTE']);
                 $cliente->setNombre($fila['NOMBRE']);
@@ -120,15 +86,24 @@ class ClienteM
                 $cliente->setDispositivo($fila['DISPOSITIVO']);
                 $cliente->setModelo($fila['MODELO']);
                 $cliente->setBorradoLogico($fila['BORRADOLOGICO']);
-                $todos[] = $cliente;
+
+                // Reparaciones
+                $reparaciones = new Reparaciones();
+                $reparaciones->setDiagnostico($fila['DIAGNOSTICO']);
+                $reparaciones->setStatus($fila['STATUS']);
+                $reparaciones->setPrecio($fila['PRECIO']);
+                $reparaciones->setFechaIngreso($fila['FECHA_INGRESO']);
+
+                // Guardar ambos como un par
+                $todos[] = ['cliente' => $cliente, 'reparacion' => $reparaciones];
             }
         } else {
             $todos = null;
         }
 
-        $conexion->Cerrar();
         return $todos;
     }
+
 
     public function BorradoLogico($id)
     {

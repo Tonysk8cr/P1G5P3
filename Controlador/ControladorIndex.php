@@ -20,8 +20,11 @@ class ControladorIndex
     }
 
     public function HistorialClientes(){
-        require_once "./Vista/HistorialClientes.php";
+        require_once "./Controlador/ControladorCliente.php";
+        $controladorCliente = new ControladorCliente();
+        $controladorCliente->verTodo();
     }
+
 
     public function FormulariosReparacion(){
         require_once "./Vista/FormulariosReparacion.php";
@@ -32,7 +35,9 @@ class ControladorIndex
     }
 
     public function BorrarFormulario(){
-        require_once "./Vista/BorrarFormulario.php";
+        require_once "./Controlador/ControladorReparaciones.php";
+        $controladorReparaciones = new ControladorReparaciones();
+        $controladorReparaciones->verId();
     }
 
     public function AsignarPrecio(){
