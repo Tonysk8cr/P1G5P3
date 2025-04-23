@@ -6,56 +6,35 @@ include_once "./Modelo/Metodos/UsuarioM.php";
 
 class ControladorUsuario
 {
-    private function UsuarioaJson(Usuario $usuario)
-    {
-        $usuarioArray = [
-            'ID_USUARIO' => $usuario->getId(),
-            'CORREO' => $usuario->getCorreo(),
-            'ROL' => $usuario->getRol(),
-            'BORRADOLOGICO' => $usuario->getBorradoLogico()
-        ];
-        return json_encode($usuarioArray);
-    }
-
     public function login()
     {
-        // Verifica que venga una solicitud POST
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            echo json_encode(['success' => false, 'mensaje' => 'Método no permitido']);
+            echo "<script>alert('Método no permitido');</script>";
             return;
         }
 
-        // Obtener JSON desde el frontend
-        $data = json_decode(file_get_contents("php://input"), true);
-        $correo = $data['correo'] ?? '';
-        $contrasena = $data['contrasena'] ?? '';
+        $correo = $_POST['correo'] ?? '';
+        $contrasena = $_POST['contrasena'] ?? '';
 
-        // Validación rápida
         if (empty($correo) || empty($contrasena)) {
-            echo json_encode(['success' => false, 'mensaje' => 'Correo y contraseña requeridos']);
+            echo "<script>alert('Correo y contraseña requeridos'); window.location.href='index.php?controller=index&action=inicioSesion';</script>";
             return;
         }
 
-        // Buscar usuario
         $usuarioM = new UsuarioM();
         $usuario = $usuarioM->BuscarPorCorreo($correo);
 
-        if ($usuario && password_verify($contrasena, $usuario->getContrasena())) {
+        if ($usuario && $contrasena === $usuario->getContrasena()){
             $_SESSION['usuario'] = [
                 'ID_USUARIO' => $usuario->getId(),
                 'CORREO' => $usuario->getCorreo(),
-                'ROL' => $usuario->getRol()
             ];
 
-            echo json_encode([
-                'success' => true,
-                'usuario' => [
-                    'correo' => $usuario->getCorreo(),
-                    'rol' => $usuario->getRol()
-                ]
-            ]);
-        } else {
-            echo json_encode(['success' => false, 'mensaje' => 'Credenciales inválidas']);
+            // ✅ Redirigir limpio, sin el error en la URL
+            header("Location: index.php?controller=index&action=index");
+            exit();
         }
+
     }
 }
+

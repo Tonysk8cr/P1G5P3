@@ -1,3 +1,14 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php?controller=index&action=inicioSesion&error=1");
+    exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,7 +57,7 @@
                 <th scope="col">Modelo</th>
                 <th scope="col">Diagnostico</th>
                 <th scope="col">Precio final por reparación</th>
-                <th scope="col">Status</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Fecha de ingreso</th>
             </tr>
             <tbody id="tablaHistorial">

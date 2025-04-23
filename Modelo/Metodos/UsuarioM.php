@@ -5,7 +5,7 @@ class UsuarioM
 {
     public function BuscarPorCorreo($correo) {
         $conexion = new Conexion();
-        $sql = "SELECT * FROM usuario WHERE CORREO = '$correo' AND BORRADOLOGICO = 1;";
+        $sql = "SELECT * FROM usuario WHERE CORREO = '$correo';";
         $resultado = $conexion->Ejecutar($sql);
 
         if ($resultado && mysqli_num_rows($resultado) > 0) {

@@ -1,5 +1,8 @@
+
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../Modelo/Conexion.php';
 require_once __DIR__ . '/../Modelo/Entidades/Cliente.php';
 require_once __DIR__ . '/../Modelo/Metodos/ClienteM.php';

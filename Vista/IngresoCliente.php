@@ -1,31 +1,13 @@
 <?php
-require_once(__DIR__ . '/../Modelo/Entidades/Cliente.php');
-require_once(__DIR__ . '/../Modelo/Metodos/ClienteM.php');
-require_once(__DIR__ . '/../Modelo/Conexion.php');
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cliente = new Cliente();
-    $cliente->setNombre($_POST["Nombre"]);
-    $cliente->setCedula($_POST["Cedula"]);
-    $cliente->setTelefono($_POST["Telefono"]);
-    $cliente->setCorreo($_POST["Correo"]);
-    $cliente->setObservaciones($_POST["Observaciones"]);
-    $cliente->setEncargado($_POST["Encargado"]);
-    $cliente->setDispositivo($_POST["Dispositivo"]);
-    $cliente->setModelo($_POST["Modelo"]);
-
-    $metodo = new ClienteM();
-    $conexion = new Conexion();
-
-    if ($metodo->Nuevo($cliente, $conexion)) {
-        echo "<script>alert('Cliente y formulario de reparación registrados');</script>";
-    } else {
-        echo "<script>alert('Error al guardar el cliente');</script>";
-    }
-    $conexion->Cerrar();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php?controller=index&action=inicioSesion&error=1");
+    exit();
 }
 ?>
+
 
 <!doctype html>
 <html lang="es">
@@ -177,5 +159,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="./JS/JSIngresoCliente.js"></script>
+
+
+<?php
+require_once(__DIR__ . '/../Modelo/Entidades/Cliente.php');
+require_once(__DIR__ . '/../Modelo/Metodos/ClienteM.php');
+require_once(__DIR__ . '/../Modelo/Conexion.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $cliente = new Cliente();
+    $cliente->setNombre($_POST["Nombre"]);
+    $cliente->setCedula($_POST["Cedula"]);
+    $cliente->setTelefono($_POST["Telefono"]);
+    $cliente->setCorreo($_POST["Correo"]);
+    $cliente->setObservaciones($_POST["Observaciones"]);
+    $cliente->setEncargado($_POST["Encargado"]);
+    $cliente->setDispositivo($_POST["Dispositivo"]);
+    $cliente->setModelo($_POST["Modelo"]);
+
+    $metodo = new ClienteM();
+    $conexion = new Conexion();
+
+    if ($metodo->Nuevo($cliente, $conexion)) {
+        echo "<script>alert('Cliente y formulario de reparación registrados');</script>";
+    } else {
+        echo "<script>alert('Error al guardar el cliente');</script>";
+    }
+    $conexion->Cerrar();
+
+}
+?>
+
 </body>
 </html>

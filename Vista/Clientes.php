@@ -1,3 +1,14 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php?controller=index&action=inicioSesion&error=1");
+    exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -43,7 +54,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Ver Historial de Clientes</h5>
                     <p class="card-text">Consulta el registro completo de interacciones, compras y actividad de cada cliente para un mejor seguimiento y atención personalizada.</p>
-                    <a href="index.php?controller=index&action=HistorialClientes" <button class="btn btn-light">Ver Historial</button></a>
+                    <a href="index.php?controller=index&action=HistorialClientes" class="btn btn-light">Ver Historial</a>
                 </div>
             </div>
         </div>
@@ -56,7 +67,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Ingresar Clientes</h5>
                     <p class="card-text">Añade nuevos clientes al sistema de forma rápida y sencilla, registrando su información básica para futuras gestiones.</p>
-                    <button id="IngresoCliente" class="btn btn-light" disabled>Ingresar Cliente</button>
+                    <a href="index.php?controller=index&action=IngresoCliente" class="btn btn-light">Ingresar Cliente</a>
                 </div>
             </div>
         </div>

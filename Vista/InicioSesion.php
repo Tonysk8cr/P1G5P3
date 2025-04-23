@@ -38,14 +38,14 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center text-white">Iniciar Sesión</h5>
-                    <form action="index.php?controller=index&action=index" method="post">
-                        <div class="mb-3 text-white">
+                    <form action="index.php?controller=usuario&action=login" method="post">
+                    <div class="mb-3 text-white">
                             <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" required>
+                            <input type="email" name="correo" class="form-control" id="email" placeholder="Ingresa tu correo" required>
                         </div>
                         <div class="mb-3 text-white">
                             <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
+                            <input type="password" name="contrasena" class="form-control" id="password" placeholder="Ingresa tu contraseña" required>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-success">Ingresar</button>
@@ -59,4 +59,13 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_GET['error']) && $_GET['error'] == 1 && !isset($_SESSION['usuario'])) {
+    echo '<script>alert("Debes iniciar sesión para acceder a esta sección.");</script>';
+}
+?>
 </html>

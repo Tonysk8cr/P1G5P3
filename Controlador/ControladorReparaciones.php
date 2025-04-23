@@ -1,5 +1,14 @@
-    <?php
+<?php
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.php?controller=index&action=inicioSesion&error=1");
+    exit();
+}
+?>
+
+<?php
     require_once __DIR__ . '/../Modelo/Conexion.php';
     require_once __DIR__ . '/../Modelo/Entidades/Reparaciones.php';
     require_once __DIR__ . '/../Modelo/Metodos/ReparacionesM.php';
