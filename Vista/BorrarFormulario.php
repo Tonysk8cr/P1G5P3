@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
         $id = $_POST["IDFormulario"];
         $conexion = new Conexion();
 
-        $sql = "UPDATE formulario_reparacion SET estado = '0' WHERE id_cliente = '$id'";
+        $sql = "UPDATE formulario_reparacion SET BORRADOLOGICO = '0' WHERE ID_FORMULARIO = '$id'";
 
         if ($conexion->Ejecutar($sql)) {
             echo "<script>alert(' Formulario marcado como eliminado');</script>";
