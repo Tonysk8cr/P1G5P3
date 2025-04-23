@@ -69,7 +69,8 @@
                         <button type="submit" class="btn btn-outline-success">Ingresar Diagnóstico</button>
                         <br>
                         <br>
-                        <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                        <a><button type="button" class="btn btn-outline-info" onclick="visualizarActualizacion()">Visualizar Actualización</button></a>
+
                     </div>
                 </form>
             </div>
@@ -92,17 +93,18 @@
                 <th scope="col">Nombre Cliente</th>
                 <th scope="col">Cédula</th>
                 <th scope="col">Teléfono</th>
-                <th scope="col">Correo electronico</th>
-                <th scope="col">Observaciónes</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col">Observaciones</th>
                 <th scope="col">Encargado de reparación</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Modelo</th>
-                <th scope="col">Diagnostico</th>
+                <th scope="col">Diagnóstico</th>
                 <th scope="col">Precio final por reparación</th>
                 <th scope="col">Status</th>
                 <th scope="col">Fecha de ingreso</th>
             </tr>
             </thead>
+            <tbody></tbody>
         </table>
     </div>
 
@@ -146,13 +148,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 }
 ?>
 
+<script>
+    function visualizarActualizacion() {
+        if (typeof objetoId !== "undefined") {
+            ConsultarID(objetoId);
+        } else {
+            alert("No hay datos cargados. Realice una búsqueda primero.");
+        }
+    }
+</script>
 
 <!--script de envio de datos al front-->
 <script src="./Vista/assets/BuscarID.js"></script>
 <script>
     <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
     var objetoId = <?php echo $JSONReparaciones ?>;
-    BorrarFormulario(objetoId);
+    ConsultarID(objetoId);
     <?php endif; ?>
 </script>
 
