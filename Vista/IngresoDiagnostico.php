@@ -69,7 +69,7 @@
                         <button type="submit" class="btn btn-outline-success">Ingresar Diagnóstico</button>
                         <br>
                         <br>
-                        <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                        <a><button type="button" class="btn btn-outline-info" onclick="buscarFormulario()">Visualizar Actualizacion</button></a>
                     </div>
                 </form>
             </div>
