@@ -1,25 +1,3 @@
-<?php
-require_once(__DIR__ . '/../Modelo/Conexion.php');
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDFormulario"]) && isset($_POST["Status"])) {
-    $id = $_POST["IDFormulario"];
-    $nuevo_estado = $_POST["Status"];
-
-    $conexion = new Conexion();
-
-    // Solo se actualiza la tabla formulario_reparacion
-    $sql = "UPDATE formulario_reparacion SET Status = '$nuevo_estado' WHERE id_formulario = '$id'";
-
-    if ($conexion->Ejecutar($sql)) {
-        echo "<script>alert('Estado actualizado correctamente');</script>";
-    } else {
-        echo "<script>alert('Error al actualizar el estado');</script>";
-    }
-
-    $conexion->Cerrar();
-}
-?>
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -34,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDFormulario"]) && iss
     <!--Navbar-->
     <div class="row">
         <nav class="navbar navbar-expand-lg bg-secondary" data-bs-theme="dark">
-            <a class="navbar-brand"><strong>ACTUALIZAR STATUS DE UN EQUIPO</strong></a>
+            <a class="navbar-brand"><strong>ACTUALIZAR ESTADO DE UN EQUIPO</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,27 +45,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDFormulario"]) && iss
                     <label for="user-name"><strong>ID Formulario</strong></label>
                     <input
                             type="number"
-                            name="IDFormulario"
+                            name="id_formulario"
                             class="form-control form-control-sm"
-                    />
+                            value="<?php echo isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>" />
+
                     <br>
                     <!-- Opciones Status -->
                     <div class="form-group">
-                        <label for="select-group"><strong>Seleccione el status actual del equipo</strong></label>
-                        <select name="Status" class="form-control">
-                            <option value="En Espera">En Espera...</option>
-                            <option value="En Proceso">En Proceso</option>
-                            <option value="Listo">Listo</option>
+                        <label for="select-group"><strong>Seleccione el estado actual del equipo</strong></label>
+                        <select name="status" class="form-control">
+                            <option value="enEspera">En Espera...</option>
+                            <option value="enProceso">En Proceso</option>
+                            <option value="listo">Listo</option>
                         </select>
                     </div>
                     <br>
                     <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                     <br>
                     <br>
-                    <button type="submit" id="ActualizarStatus" class="btn btn-outline-success">Actualizar Status</button>
+                    <a><button type="button" id="VisualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
                     <br>
                     <br>
-                    <a><button type="button" id="ActualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                    <button type="submit" class="btn btn-outline-success">Actualizar Status</button>
                 </div>
             </form>
         </div>
@@ -125,6 +104,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDFormulario"]) && iss
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once(__DIR__ . '/../Modelo/Conexion.php');
+require_once(__DIR__ . '/../Modelo/Entidades/Reparaciones.php');
+require_once(__DIR__ . '/../Modelo/Metodos/ReparacionesM.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+    isset($_POST["id_formulario"]) &&
+    isset($_POST["status"])) {
+    $id_formulario = $_POST["id_formulario"];
+    $status = $_POST["status"];
+
+    if (!isset($_SESSION['formulario_confirmado']) || $_SESSION['formulario_confirmado'] != $id_formulario) {
+        echo "<script>alert('Debe buscar primero un formulario válido antes de ingresar el diagnóstico.');</script>";
+        exit;
+    }
+    //Obejeto reparaciones
+    $reparacion = new Reparaciones();
+    $reparacion->setIdFormulario($id_formulario);
+    $reparacion->setStatus($status);
+
+    $reparacionesM = new ReparacionesM();
+    $resultado = $reparacionesM->Actualizar($reparacion);
+
+    if ($resultado) {
+        echo "<script>alert('Estado actualizado');</script>";
+        unset($_SESSION['formulario_confirmado']);
+    } else {
+        echo "<script>alert('Error al guardar el diagnóstico');</script>";
+    }
+
+}
+?>
+
 <!--script de envio de datos al front-->
 <script src="./Vista/assets/BuscarID.js"></script>
 <script>
@@ -137,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDFormulario"]) && iss
 <!--script para enviar los datos del id hacia el back-->
 <script>
     function buscarFormulario() {
-        const id = document.querySelector('input[name="IDFormulario"]').value;
+        const id = document.querySelector('input[name="id_formulario"]').value;
         if (id) {
             window.location.href = `index.php?controller=index&action=ActualizarStatus&id=${id}`;
         } else {

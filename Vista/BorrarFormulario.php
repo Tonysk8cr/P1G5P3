@@ -1,26 +1,3 @@
-<?php
-require_once(__DIR__ . '/../Modelo/Conexion.php');
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
-    if (!empty($_POST["IDFormulario"])) {
-        $id = $_POST["IDFormulario"];
-        $conexion = new Conexion();
-
-        $sql = "UPDATE formulario_reparacion SET BORRADOLOGICO = '0' WHERE ID_FORMULARIO = '$id'";
-
-        if ($conexion->Ejecutar($sql)) {
-            echo "<script>alert(' Formulario marcado como eliminado');</script>";
-        } else {
-            echo "<script>alert(' Error al realizar el borrado lógico');</script>";
-        }
-
-        $conexion->Cerrar();
-    } else {
-        echo "<script>alert('Ingresá un ID válido');</script>";
-    }
-}
-?>
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -70,10 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
                 <div class="form-group">
                     <label for="user-name"><strong>ID Formulario</strong></label>
                     <input
-                        type="number"
-                        name="IDFormulario"
-                        class="form-control form-control-sm"
-                        required
+                            type="number"
+                            name="id_formulario"
+                            class="form-control form-control-sm"
+                            required
                     />
                     <br>
                     <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
@@ -117,6 +94,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once(__DIR__ . '/../Modelo/Conexion.php');
+require_once(__DIR__ . '/../Modelo/Entidades/Reparaciones.php');
+require_once(__DIR__ . '/../Modelo/Metodos/ReparacionesM.php');
+if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+    isset($_POST["id_formulario"]) &&
+    isset($_POST["eliminar"])){
+    $id_formulario = $_POST["id_formulario"];
+    $eliminar = $_POST["eliminar"];
+
+    if (!isset($_SESSION['formulario_confirmado']) || $_SESSION['formulario_confirmado'] != $id_formulario) {
+        echo "<script>alert('Debe buscar primero un formulario válido antes de ingresar el diagnóstico.');</script>";
+        exit;
+    }
+    //Objeto de cliente
+    $reparacion = new Reparaciones();
+    $reparacion->setIdFormulario($id_formulario);
+    $reparacion->setBorradoLogico('0');
+
+    $reparacionesM = new ReparacionesM();
+    $resultado = $reparacionesM->BorradoLogico($reparacion);
+
+    if ($resultado) {
+        echo "<script>alert('Estado actualizado');</script>";
+        unset($_SESSION['formulario_confirmado']);
+    } else {
+        echo "<script>alert('Error al guardar el diagnóstico');</script>";
+    }
+}
+?>
 <!--Script de envio de datos al front-->
 <script src="./Vista/assets/BuscarID.js"></script>
 <script>
@@ -129,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
 <!--script para enviar los datos del id hacia el back-->
 <script>
     function buscarFormulario() {
-        const id = document.querySelector('input[name="IDFormulario"]').value;
+        const id = document.querySelector('input[name="id_formulario"]').value;
         if (id) {
             window.location.href = `index.php?controller=index&action=BorrarFormulario&id=${id}`;
         } else {

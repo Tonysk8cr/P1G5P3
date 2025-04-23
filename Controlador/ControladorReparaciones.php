@@ -66,6 +66,7 @@
                     $reparacion = $resultado[0]['reparacion'];
                     $cliente = $resultado[0]['cliente'];
                     $JSONReparaciones = $this->ReparacionaJson($reparacion, $cliente);
+                    $_SESSION['formulario_confirmado'] = $reparacion->getIdFormulario();
                 }else{
                     $IDNoEncontrado = true;
                 }

@@ -81,7 +81,7 @@ class ReparacionesM
                       `DIAGNOSTICO`='".$reparaciones->getDiagnostico()."',
                       `PRECIO`='".$reparaciones->getPrecio()."',
                       `STATUS`='".$reparaciones->getStatus()."'
-                  WHERE `ID` = ".$reparaciones->getIdFormulario().";";
+                  WHERE `ID_FORMULARIO` = ".$reparaciones->getIdFormulario().";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
@@ -89,13 +89,13 @@ class ReparacionesM
     }
 
     //Borrado logico
-    public function BorradoLogico($id)
+    public function BorradoLogico(Reparaciones $reparaciones)
     {
         $retVal=false;
         $conexion= new Conexion();
         $sql="UPDATE `formulario_reparacion` SET 
-                      `BORRADOLOGICO`='0' 
-                  WHERE `ID_FORMULARIO` = ".$id.";";
+                      `BORRADOLOGICO`='".$reparaciones->getBorradologico()."'
+                  WHERE `ID_FORMULARIO` = ".$reparaciones->getIdFormulario().";";
         if($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
