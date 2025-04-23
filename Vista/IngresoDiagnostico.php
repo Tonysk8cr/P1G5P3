@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_formulario"]) && is
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">VOLVER</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="index.php?controller=index&action=FormulariosReparacion">Volver a Formularios de Reparacion</a>
-                            <a class="dropdown-item" href="index.php?controller=index&action=index">Volver al Main</a>
+                            <a class="dropdown-item" href="index.php?controller=index&action=Index">Volver al Main</a>
                         </div>
                     </li>
                 </ul>
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_formulario"]) && is
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
 <!--script de envio de datos al front-->
 <script src="./Vista/assets/BuscarID.js"></script>
 <script>
