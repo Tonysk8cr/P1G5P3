@@ -102,6 +102,7 @@
                 <th scope="col">Status</th>
                 <th scope="col">Fecha de ingreso</th>
             </tr>
+            <tbody></tbody>
             </thead>
         </table>
     </div>
@@ -152,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 <script>
     <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
     var objetoId = <?php echo $JSONReparaciones ?>;
-    BorrarFormulario(objetoId);
+    Formu(objetoId);
     <?php endif; ?>
 </script>
 
@@ -170,9 +171,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 
 <!-- script para enviar un alert en caso de que el formualrio no exista-->
 <script>
-    <?php if (isset($IDNoEncontrado) && $IDNoEncontrado): ?>
-    alert("El formulario con ese ID no existe.");
+    <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
+    var objetoId = <?php echo $JSONReparaciones ?>;
+    Formu(objetoId); // llena la tabla al cargar
     <?php endif; ?>
+</script>
+
+<script>
+    document.querySelector('.btn-outline-info').addEventListener('click', function () {
+        if (typeof objetoId !== 'undefined' && objetoId) {
+            Formu(objetoId);
+        } else {
+            alert("No hay datos para mostrar. Primero realice una búsqueda.");
+        }
+    });
 </script>
 </body>
 </html>
