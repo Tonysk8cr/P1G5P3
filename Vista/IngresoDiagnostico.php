@@ -68,26 +68,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_formulario"]) && is
                     <!-- ID Cliente -->
                     <div class="form-group">
                         <label for="user-name"><strong>ID Formulario</strong></label>
-                        <input
-                                type="number"
-                                name="IDFormulario"
-                                class="form-control form-control-sm"
-                        />
+                        <input type="number"
+                               name="id_formulario"
+                               class="form-control form-control-sm" />
                         <br>
                         <!-- Diagnostico-->
                         <div class="form-group">
                             <label for="user-comment"><strong>Diagnostico</strong></label>
-                            <textarea
+                            <input
                                     type="text"
-                                    name="Diagnostico"
-                                    class="form-control"
-                            ></textarea>
+                                    name="diagnostico"
+                                    class="form-control"/>
+
+
                         </div>
                         <br>
                         <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                         <br>
                         <br>
-                        <a><button type="button" class="btn btn-outline-success">Ingresar Diagnostico</button></a>
+                        <button type="submit" class="btn btn-outline-success">Ingresar Diagnóstico</button>
                         <br>
                         <br>
                         <a><button type="button" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
