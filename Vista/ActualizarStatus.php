@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
     $reparacion->setStatus($status);
 
     $reparacionesM = new ReparacionesM();
-    $resultado = $reparacionesM->StatusActualizado($reparacion);
+    $resultado = $reparacionesM->Actualizar($reparacion);
 
     if ($resultado) {
         echo "<script>alert('Estado actualizado');</script>";

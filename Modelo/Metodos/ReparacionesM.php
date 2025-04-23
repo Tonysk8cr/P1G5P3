@@ -78,35 +78,11 @@ class ReparacionesM
         $retVal=false;
         $conexion= new Conexion();
         $sql="UPDATE `formulario_reparacion` SET 
-                      `DIAGNOSTICO`='".$reparaciones->getDiagnostico()."'
+                      `DIAGNOSTICO`='".$reparaciones->getDiagnostico()."',
+                      `PRECIO`='".$reparaciones->getPrecio()."',
+                      `STATUS`='".$reparaciones->getStatus()."'
                   WHERE `ID_FORMULARIO` = ".$reparaciones->getIdFormulario().";";
         if($conexion->Ejecutar($sql))
-            $retVal=true;
-        $conexion->Cerrar();
-        return $retVal;
-    }
-
-    public function PrecioActualizado(Reparaciones $reparaciones)
-    {
-        $retVal=false;
-        $conexion= new Conexion();
-        $sql="UPDATE `formulario_reparacion` SET
-        `PRECIO`='".$reparaciones->getPrecio()."'
-        WHERE `ID_FORMULARIO` = ".$reparaciones->getIdFormulario().";";
-        if ($conexion->Ejecutar($sql))
-            $retVal=true;
-        $conexion->Cerrar();
-        return $retVal;
-    }
-
-    public function StatusActualizado(Reparaciones $reparaciones)
-    {
-        $retVal=false;
-        $conexion= new Conexion();
-        $sql="UPDATE `formulario_reparacion` SET
-        `STATUS`='".$reparaciones->getStatus()."'
-        WHERE `ID_FORMULARIO` = ".$reparaciones->getIdFormulario().";";
-        if ($conexion->Ejecutar($sql))
             $retVal=true;
         $conexion->Cerrar();
         return $retVal;
