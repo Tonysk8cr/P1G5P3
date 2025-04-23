@@ -7,18 +7,6 @@
     <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<!-- Cargamos los datos que vienen del back-->
-<script src="./Vista/assets/TodosJS.js"></script>
-<script>
-    <?php if(isset($JSONCliente))
-        {
-    ?>
-            var todos='<?php echo $JSONCliente?>';
-            VerHistorialCliente(JSON.parse(todos));
-    <?php
-        }
-    ?>
-</script>
 <div class="container-fluid">
 
     <!--Navbar-->
@@ -61,54 +49,26 @@
                 <th scope="col">Status</th>
                 <th scope="col">Fecha de ingreso</th>
             </tr>
-            <tr>
-                <td>
-                    1
-                </td>
-                <td>
-                    Yosef Vargas Robleto
-                </td>
-                <td>
-                    118690814
-                </td>
-                <td>
-                    70489277
-                </td>
-                <td>
-                    yosefvargas25@gmail.com
-                </td>
-                <td>
-                    asdasdd
-                </td>
-                <td>
-                    Kleyber
-                </td>
-                <td>
-                    Celular
-                </td>
-                <td>
-                    Samsung S24
-                </td>
-                <td>
-                    sadasdasasd
-                </td>
-                <td>
-                    238904
-                </td>
-                <td>
-                    En Proceso
-                </td>
-                <td>
-                    1233412
-                </td>
-            </tr>
+            <tbody id="tablaHistorial">
+            <!-- Acá se van a insertar dinámicamente los <tr> -->
+            </tbody>
             </thead>
         </table>
     </div>
 
-
-
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<!-- Cargamos los datos que vienen del back-->
+<script src="./Vista/assets/TodosJS.js"></script>
+<script>
+    <?php if(isset($JSONCliente))
+    {
+    ?>
+    var todos='<?php echo $JSONCliente?>';
+    VerHistorialCliente(JSON.parse(todos));
+    <?php
+    }
+    ?>
+</script>
 </body>
 </html>
