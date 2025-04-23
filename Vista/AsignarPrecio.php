@@ -1,14 +1,13 @@
 <?php
 require_once(__DIR__ . '/../Modelo/Conexion.php');
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
     $conexion = new Conexion();
 
-    $id_cliente = $_POST["id_cliente"];
-    $precio_estimado = $_POST["precio_estimado"];
+    $id_formulario = $_POST["IDFormulario"];
+    $precio_estimado = $_POST["Precio"];
 
-    $sql = "UPDATE formulario_reparacion SET precio_estimado = '$precio_estimado' WHERE id_cliente = '$id_cliente'";
+    $sql = "UPDATE formulario_reparacion SET PRECIO = '$precio_estimado' WHERE ID_FORMULARIO = '$id_formulario'";
 
     if ($conexion->Ejecutar($sql)) {
         echo "<script>alert('Precio asignado correctamente');</script>";
@@ -72,13 +71,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
                             class="form-control form-control-sm"
                     />
                     <br>
-                    <!-- Diagnostico-->
+                    <!-- Ingreso de precio-->
                     <div>
                         <label class="form-label mt-4"><strong>Ingrese el Precio Final de Reparación</strong></label>
                         <div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">₡</span>
-                                <input type="number" class="form-control" aria-label="">
+                                <input type="number" name="Precio" class="form-control" aria-label="">
                             </div>
                         </div>
                     </div>
@@ -86,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
                     <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                     <br>
                     <br>
-                    <a><button type="button" class="btn btn-outline-success">Ingresar Precio de Reparación</button></a>
+                    <a><button type="submit" class="btn btn-outline-success">Ingresar Precio de Reparación</button></a>
                     <br>
                     <br>
                     <a><button type="button" class="btn btn-outline-info">Visualizar Actualización</button></a>
@@ -126,7 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
     </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 <!--script de envio de datos al front-->
 <script src="./Vista/assets/BuscarID.js"></script>
