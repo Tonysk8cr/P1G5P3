@@ -1,20 +1,17 @@
 <?php
 require_once(__DIR__ . '/../Modelo/Conexion.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset($_POST["estado"]) && !isset($_POST["visualizar"])) {
-    $id = $_POST["IDCliente"];
-    $nuevo_estado = $_POST["estado"];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDFormulario"]) && isset($_POST["Status"])) {
+    $id = $_POST["IDFormulario"];
+    $nuevo_estado = $_POST["Status"];
 
     $conexion = new Conexion();
 
-    $sql1 = "UPDATE formulario_reparacion SET status = '$nuevo_estado' WHERE id_formulario = '$id'";
-    $sql2 = "UPDATE cliente SET progreso = '$nuevo_estado' WHERE id_formulario = '$id'";
+    // Solo se actualiza la tabla formulario_reparacion
+    $sql = "UPDATE formulario_reparacion SET Status = '$nuevo_estado' WHERE id_formulario = '$id'";
 
-    $ok1 = $conexion->Ejecutar($sql1);
-    $ok2 = $conexion->Ejecutar($sql2);
-
-    if ($ok1 && $ok2) {
-        echo "<script>alert('Estado actualizado en ambas tablas');</script>";
+    if ($conexion->Ejecutar($sql)) {
+        echo "<script>alert('Estado actualizado correctamente');</script>";
     } else {
         echo "<script>alert('Error al actualizar el estado');</script>";
     }
@@ -22,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
     $conexion->Cerrar();
 }
 ?>
-
 
 <!doctype html>
 <html lang="es">
@@ -79,8 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
                     <div class="form-group">
                         <label for="select-group"><strong>Seleccione el status actual del equipo</strong></label>
                         <select name="Status" class="form-control">
-                            <option value="EnEspera">En Espera...</option>
-                            <option value="EnProceso">En Proceso</option>
+                            <option value="En Espera">En Espera...</option>
+                            <option value="En Proceso">En Proceso</option>
                             <option value="Listo">Listo</option>
                         </select>
                     </div>
@@ -88,10 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
                     <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                     <br>
                     <br>
-                    <a><button type="button" id="VisualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                    <button type="submit" id="ActualizarStatus" class="btn btn-outline-success">Actualizar Status</button>
                     <br>
                     <br>
-                    <a><button type="button" id="ActualizarStatus" class="btn btn-outline-success">Actualizar Status</button></a>
+                    <a><button type="button" id="ActualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
                 </div>
             </form>
         </div>

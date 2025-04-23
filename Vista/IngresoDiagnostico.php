@@ -79,8 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_formulario"]) && is
                                     type="text"
                                     name="diagnostico"
                                     class="form-control"/>
-
-
                         </div>
                         <br>
                         <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
@@ -141,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_formulario"]) && is
 <!--script para enviar los datos del id hacia el back-->
 <script>
     function buscarFormulario() {
-        const id = document.querySelector('input[name="IDFormulario"]').value;
+        const id = document.querySelector('input[name="id_formulario"]').value;
         if (id) {
             window.location.href = `index.php?controller=index&action=IngresoDiagnostico&id=${id}`;
         } else {
