@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
     $reparacion->setPrecio($precio);
 
     $reparacionesM = new ReparacionesM();
-    $resultado = $reparacionesM->Actualizar($reparacion);
+    $resultado = $reparacionesM->PrecioActualizado($reparacion);
 
     if ($resultado) {
         echo "<script>alert('Estado actualizado');</script>";
