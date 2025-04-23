@@ -1,5 +1,5 @@
 function Formu(objetoId) {
-    console.log(objetoId); // Confirmación en consola
+    //console.log(objetoId); // Confirmación en consola
 
     const tabla = document.querySelector("table tbody");
     if (!tabla || !objetoId) return;

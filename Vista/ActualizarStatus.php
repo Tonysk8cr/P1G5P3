@@ -54,19 +54,19 @@
                     <div class="form-group">
                         <label for="select-group"><strong>Seleccione el estado actual del equipo</strong></label>
                         <select name="status" class="form-control">
-                            <option value="enEspera">En Espera...</option>
-                            <option value="enProceso">En Proceso</option>
-                            <option value="listo">Listo</option>
+                            <option value="En Espera">En Espera...</option>
+                            <option value="En Proceso">En Proceso</option>
+                            <option value="Listo">Listo</option>
                         </select>
                     </div>
                     <br>
                     <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                     <br>
                     <br>
-                    <a><button type="button" id="VisualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
-                    <br>
-                    <br>
                     <button type="submit" class="btn btn-outline-success">Actualizar Status</button>
+                    <br>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-info" onclick="buscarFormulario()">Visualizar Actualizacion</button></a>
                 </div>
             </form>
         </div>
@@ -98,6 +98,7 @@
                 <th scope="col">Status</th>
                 <th scope="col">Fecha de ingreso</th>
             </tr>
+            <tbody></tbody>
             </thead>
         </table>
     </div>
@@ -145,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 <script>
     <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
     var objetoId = <?php echo $JSONReparaciones ?>;
-    BorrarFormulario(objetoId);
+    Formu(objetoId);
     <?php endif; ?>
 </script>
 
@@ -166,6 +167,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
     <?php if (isset($IDNoEncontrado) && $IDNoEncontrado): ?>
     alert("El formulario con ese ID no existe.");
     <?php endif; ?>
+</script>
+
+<script>
+    document.querySelector('.btn-outline-info').addEventListener('click', function () {
+        if (typeof objetoId !== 'undefined' && objetoId) {
+            Formu(objetoId);
+        } else {
+            alert("No hay datos para mostrar. Primero realice una búsqueda.");
+        }
+    });
 </script>
 </body>
 </html>

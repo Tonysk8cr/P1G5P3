@@ -67,7 +67,7 @@
                     <a><button type="submit" class="btn btn-outline-success">Ingresar Precio de Reparación</button></a>
                     <br>
                     <br>
-                    <a><button type="submit" class="btn btn-outline-info">Visualizar Actualización</button></a>
+                    <a><button type="button" class="btn btn-outline-info" onclick="buscarFormulario()">Visualizar Actualizacion</button></a>
                 </div>
             </form>
         </div>
@@ -99,6 +99,7 @@
                 <th scope="col">Status</th>
                 <th scope="col">Fecha de ingreso</th>
             </tr>
+            <tbody></tbody>
             </thead>
         </table>
     </div>
@@ -146,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 <script>
     <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
     var objetoId = <?php echo $JSONReparaciones ?>;
-    BorrarFormulario(objetoId);
+    Formu(objetoId);
     <?php endif; ?>
 </script>
 
@@ -167,6 +168,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" &&
     <?php if (isset($IDNoEncontrado) && $IDNoEncontrado): ?>
     alert("El formulario con ese ID no existe.");
     <?php endif; ?>
+</script>
+
+<script>
+    document.querySelector('.btn-outline-info').addEventListener('click', function () {
+        if (typeof objetoId !== 'undefined' && objetoId) {
+            Formu(objetoId);
+        } else {
+            alert("No hay datos para mostrar. Primero realice una búsqueda.");
+        }
+    });
 </script>
 </body>
 </html>
