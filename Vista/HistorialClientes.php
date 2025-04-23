@@ -50,7 +50,6 @@
                 <th scope="col">Fecha de ingreso</th>
             </tr>
             <tbody id="tablaHistorial">
-            <!-- Acá se van a insertar dinámicamente los <tr> -->
             </tbody>
             </thead>
         </table>

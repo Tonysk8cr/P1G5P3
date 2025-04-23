@@ -43,7 +43,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Ver Historial de Clientes</h5>
                     <p class="card-text">Consulta el registro completo de interacciones, compras y actividad de cada cliente para un mejor seguimiento y atención personalizada.</p>
-                    <a href="index.php?controller=index&action=HistorialClientes" class="btn btn-light">Ver Historial</a>
+                    <a href="index.php?controller=index&action=HistorialClientes" <button class="btn btn-light">Ver Historial</button></a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Ingresar Clientes</h5>
                     <p class="card-text">Añade nuevos clientes al sistema de forma rápida y sencilla, registrando su información básica para futuras gestiones.</p>
-                    <a href="index.php?controller=index&action=IngresoCliente" class="btn btn-light">Ingresar Cliente</a>
+                    <button id="IngresoCliente" class="btn btn-light" disabled>Ingresar Cliente</button>
                 </div>
             </div>
         </div>
@@ -67,5 +67,11 @@
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<!--Script para desabilitar botones-->
+<script>
+    document.getElementById("IngresoCliente").addEventListener("click", function () {
+        window.location.href = "index.php?controller=index&action=IngresoCliente";
+    });
+</script>
 </body>
 </html>
