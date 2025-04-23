@@ -54,15 +54,38 @@
             }
             return json_encode($reparacionArray);
         }
-        public function verId()
+        public function verId($id, $vista)
         {
-            echo "Reparaciones por ID reparacion<br>";
-            $reparacionesM = new ReparacionesM();
-            $resultado = $reparacionesM->BuscarId(1);
-            $reparacion = $resultado[0]['reparacion'];
-            $cliente = $resultado[0]['cliente'];
-            $JSONReparaciones = $this->ReparacionaJson($reparacion, $cliente);
-            require_once "./Vista/BorrarFormulario.php";
+            $JSONReparaciones = null;
+            $IDNoEncontrado = false;
+
+            if ($id !== null && is_numeric($id)) {
+                $reparacionesM = new ReparacionesM();
+                $resultado = $reparacionesM->BuscarId($id);
+                if ($resultado) {
+                    $reparacion = $resultado[0]['reparacion'];
+                    $cliente = $resultado[0]['cliente'];
+                    $JSONReparaciones = $this->ReparacionaJson($reparacion, $cliente);
+                }else{
+                    $IDNoEncontrado = true;
+                }
+            }
+
+            switch ($vista) {
+                case "BorrarFormulario":
+                    require_once "./Vista/BorrarFormulario.php";
+                    break;
+                case "ActualizarStatus":
+                    require_once "./Vista/ActualizarStatus.php";
+                    break;
+                case "IngresoDiagnostico":
+                    require_once "./Vista/IngresoDiagnostico.php";
+                    break;
+                case "AsignarPrecio":
+                    require_once "./Vista/AsignarPrecio.php";
+                    break;
+            }
         }
+
 
     }

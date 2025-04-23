@@ -11,9 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
     $sql = "UPDATE formulario_reparacion SET precio_estimado = '$precio_estimado' WHERE id_cliente = '$id_cliente'";
 
     if ($conexion->Ejecutar($sql)) {
-        echo "<script>alert('✅ Precio asignado correctamente');</script>";
+        echo "<script>alert('Precio asignado correctamente');</script>";
     } else {
-        echo "<script>alert('❌ Error al asignar el precio');</script>";
+        echo "<script>alert('Error al asignar el precio');</script>";
     }
 
     $conexion->Cerrar();
@@ -65,10 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
             <form method="post">
                 <!-- ID Cliente -->
                 <div class="form-group">
-                    <label for="user-name"><strong>ID Cliente</strong></label>
+                    <label for="user-name"><strong>ID Formulario</strong></label>
                     <input
                             type="number"
-                            name="IDCliente"
+                            name="IDFormulario"
                             class="form-control form-control-sm"
                     />
                     <br>
@@ -82,6 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
+                    <br>
                     <br>
                     <a><button type="button" class="btn btn-outline-success">Ingresar Precio de Reparación</button></a>
                     <br>
@@ -124,5 +127,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["visualizar"])) {
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<!--script de envio de datos al front-->
+<script src="./Vista/assets/BuscarID.js"></script>
+<script>
+    <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
+    var objetoId = <?php echo $JSONReparaciones ?>;
+    BorrarFormulario(objetoId);
+    <?php endif; ?>
+</script>
+
+<!--script para enviar los datos del id hacia el back-->
+<script>
+    function buscarFormulario() {
+        const id = document.querySelector('input[name="IDFormulario"]').value;
+        if (id) {
+            window.location.href = `index.php?controller=index&action=AsignarPrecio&id=${id}`;
+        } else {
+            alert("Por favor ingrese un ID");
+        }
+    }
+</script>
+
+<!-- script para enviar un alert en caso de que el formualrio no exista-->
+<script>
+    <?php if (isset($IDNoEncontrado) && $IDNoEncontrado): ?>
+    alert("El formulario con ese ID no existe.");
+    <?php endif; ?>
+</script>
 </body>
 </html>

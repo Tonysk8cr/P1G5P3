@@ -1,23 +1,22 @@
 <?php
 require_once(__DIR__ . '/../Modelo/Conexion.php');
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset($_POST["estado"]) && !isset($_POST["visualizar"])) {
     $id = $_POST["IDCliente"];
     $nuevo_estado = $_POST["estado"];
 
     $conexion = new Conexion();
 
-    $sql1 = "UPDATE formulario_reparacion SET status = '$nuevo_estado' WHERE id_cliente = '$id'";
-    $sql2 = "UPDATE cliente SET progreso = '$nuevo_estado' WHERE id_cliente = '$id'";
+    $sql1 = "UPDATE formulario_reparacion SET status = '$nuevo_estado' WHERE id_formulario = '$id'";
+    $sql2 = "UPDATE cliente SET progreso = '$nuevo_estado' WHERE id_formulario = '$id'";
 
     $ok1 = $conexion->Ejecutar($sql1);
     $ok2 = $conexion->Ejecutar($sql2);
 
     if ($ok1 && $ok2) {
-        echo "<script>alert('✅ Estado actualizado en ambas tablas');</script>";
+        echo "<script>alert('Estado actualizado en ambas tablas');</script>";
     } else {
-        echo "<script>alert('❌ Error al actualizar el estado');</script>";
+        echo "<script>alert('Error al actualizar el estado');</script>";
     }
 
     $conexion->Cerrar();
@@ -69,10 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
             <form method="post">
                 <!-- ID Cliente -->
                 <div class="form-group">
-                    <label for="user-name"><strong>ID Cliente</strong></label>
+                    <label for="user-name"><strong>ID Formulario</strong></label>
                     <input
                             type="number"
-                            name="IDCliente"
+                            name="IDFormulario"
                             class="form-control form-control-sm"
                     />
                     <br>
@@ -86,10 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
                         </select>
                     </div>
                     <br>
-                    <a><button type="button" id="ActualizarStatus" class="btn btn-outline-success">Actualizar Status</button></a>
+                    <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                     <br>
                     <br>
                     <a><button type="button" id="VisualizarStatus" class="btn btn-outline-info">Visualizar Actualizacion</button></a>
+                    <br>
+                    <br>
+                    <a><button type="button" id="ActualizarStatus" class="btn btn-outline-success">Actualizar Status</button></a>
                 </div>
             </form>
         </div>
@@ -127,5 +129,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["IDCliente"]) && isset(
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<!--script de envio de datos al front-->
+<script src="./Vista/assets/BuscarID.js"></script>
+<script>
+    <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
+    var objetoId = <?php echo $JSONReparaciones ?>;
+    BorrarFormulario(objetoId);
+    <?php endif; ?>
+</script>
+
+<!--script para enviar los datos del id hacia el back-->
+<script>
+    function buscarFormulario() {
+        const id = document.querySelector('input[name="IDFormulario"]').value;
+        if (id) {
+            window.location.href = `index.php?controller=index&action=ActualizarStatus&id=${id}`;
+        } else {
+            alert("Por favor ingrese un ID");
+        }
+    }
+</script>
+
+<!-- script para enviar un alert en caso de que el formualrio no exista-->
+<script>
+    <?php if (isset($IDNoEncontrado) && $IDNoEncontrado): ?>
+    alert("El formulario con ese ID no existe.");
+    <?php endif; ?>
+</script>
 </body>
 </html>

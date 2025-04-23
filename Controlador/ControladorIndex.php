@@ -12,7 +12,11 @@ class ControladorIndex
     }
 
     public function IngresoDiagnostico(){
-        require_once "./Vista/IngresoDiagnostico.php";
+        require_once "./Controlador/ControladorReparaciones.php";
+        $controladorReparaciones = new ControladorReparaciones();
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $controladorReparaciones->verId($id, "IngresoDiagnostico");
+
     }
 
     public function IngresoCliente(){
@@ -37,14 +41,21 @@ class ControladorIndex
     public function BorrarFormulario(){
         require_once "./Controlador/ControladorReparaciones.php";
         $controladorReparaciones = new ControladorReparaciones();
-        $controladorReparaciones->verId();
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $controladorReparaciones->verId($id, "BorrarFormulario");
     }
 
     public function AsignarPrecio(){
-        require_once "./Vista/AsignarPrecio.php";
+        require_once "./Controlador/ControladorReparaciones.php";
+        $controladorReparaciones = new ControladorReparaciones();
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $controladorReparaciones->verId($id, "AsignarPrecio");
     }
 
     public function ActualizarStatus(){
-        require_once "./Vista/ActualizarStatus.php";
+        require_once "./Controlador/ControladorReparaciones.php";
+        $controladorReparaciones = new ControladorReparaciones();
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        $controladorReparaciones->verId($id, "ActualizarStatus");
     }
 }

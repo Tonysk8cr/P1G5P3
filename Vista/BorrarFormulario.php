@@ -2,8 +2,8 @@
 require_once(__DIR__ . '/../Modelo/Conexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
-    if (!empty($_POST["IDCliente"])) {
-        $id = $_POST["IDCliente"];
+    if (!empty($_POST["IDFormulario"])) {
+        $id = $_POST["IDFormulario"];
         $conexion = new Conexion();
 
         $sql = "UPDATE formulario_reparacion SET estado = '0' WHERE id_cliente = '$id'";
@@ -30,19 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
     <link href="/Proyecto/Vista/Estilos/bootstrap.min.css" rel="stylesheet">
 </head>
 
+
 <body>
-<!--Script de envio de datos al front-->
-<script src="./Vista/assets/BuscarID.js"></script>
-<script>
-    <?php if (isset($JSONReparaciones))
-        {
-    ?>
-            var objetoId='<?php echo $JSONReparaciones?>'
-            BorrarFormulario(JSON.parse(objetoId));
-    <?php
-        }
-    ?>
-</script>
+
 <div class="container-fluid">
 
     <!--Navbar-->
@@ -78,15 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
             <form method="post">
                 <!-- ID Cliente -->
                 <div class="form-group">
-                    <label for="user-name"><strong>ID Cliente</strong></label>
+                    <label for="user-name"><strong>ID Formulario</strong></label>
                     <input
                         type="number"
-                        name="IDCliente"
+                        name="IDFormulario"
                         class="form-control form-control-sm"
                         required
                     />
                     <br>
-                    <a><button type="button" class="btn btn-outline-light">Buscar Informacion</button></a>
+                    <a><button type="button" class="btn btn-outline-light" onclick="buscarFormulario()">Buscar Informacion</button></a>
                     <br>
                     <br>
                     <a><button type="submit" name="eliminar" class="btn btn-outline-danger">Eliminar Formulario</button></a>
@@ -127,5 +117,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["eliminar"])) {
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+<!--Script de envio de datos al front-->
+<script src="./Vista/assets/BuscarID.js"></script>
+<script>
+    <?php if (isset($JSONReparaciones) && $JSONReparaciones): ?>
+    var objetoId = <?php echo $JSONReparaciones ?>;
+    BorrarFormulario(objetoId);
+    <?php endif; ?>
+</script>
+
+<!--script para enviar los datos del id hacia el back-->
+<script>
+    function buscarFormulario() {
+        const id = document.querySelector('input[name="IDFormulario"]').value;
+        if (id) {
+            window.location.href = `index.php?controller=index&action=BorrarFormulario&id=${id}`;
+        } else {
+            alert("Por favor ingrese un ID");
+        }
+    }
+</script>
+<!-- script para enviar un alert en caso de que el formualrio no exista-->
+<script>
+    <?php if (isset($IDNoEncontrado) && $IDNoEncontrado): ?>
+    alert("El formulario con ese ID no existe.");
+    <?php endif; ?>
+</script>
+
 </body>
 </html>
