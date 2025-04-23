@@ -3,7 +3,7 @@ function VerHistorialCliente(todos)
     console.log(todos); // Para que veas el JSON en consola
 
     const tabla = document.getElementById("tablaHistorial");
-    tabla.innerHTML = ""; // Limpiar por si hay algo previo
+    //tabla.innerHTML = "";
 
     todos.forEach(item => {
         const fila = document.createElement("tr");

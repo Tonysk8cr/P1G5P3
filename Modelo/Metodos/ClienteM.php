@@ -98,7 +98,7 @@ class ClienteM
                 $todos[] = ['cliente' => $cliente, 'reparacion' => $reparaciones];
             }
         } else {
-            $todos = null;
+            $todos = [];
         }
 
         return $todos;
