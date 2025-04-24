@@ -36,7 +36,7 @@ Navegador web
 
 Cómo usarlo
 
-Clonar el repositorio: git clone https://github.com/Tonysk8cr/ProyectoTec.git
+Clonar el repositorio: git clone https://github.com/Tonysk8cr/P1G5P3.git
 
 Importar la base de datos usando el archivo SCRIPT SQL que viene incluido.
 
