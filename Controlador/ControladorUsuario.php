@@ -30,9 +30,12 @@ class ControladorUsuario
                 'CORREO' => $usuario->getCorreo(),
             ];
 
-            // ✅ Redirigir limpio, sin el error en la URL
+            //Redirigir limpio, sin el error en la URL
             header("Location: index.php?controller=index&action=index");
             exit();
+        } else {
+            echo "<script>alert('Correo o contraseña incorrectos'); window.location.href='index.php?controller=index&action=inicioSesion';</script>";
+            return;
         }
 
     }
